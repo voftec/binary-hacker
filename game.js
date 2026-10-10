@@ -889,7 +889,7 @@ function renderSumGrid(grid, valueEl, mission) {
     : cell(sum.carryOut ? "1" : "", "lost") + digits(sum.result);
   grid.style.setProperty("--cols", bits + 1);
   grid.innerHTML = [
-    carries + cell(),
+    cell() + carries,
     cell() + digits(sum.a),
     cell("+", "sign") + digits(sum.b),
     '<span class="sum-line"></span>',
