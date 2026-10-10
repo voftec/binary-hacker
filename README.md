@@ -14,8 +14,11 @@ Luego abre `http://localhost:8080`.
 
 ## Contenido
 
-- 8 misiones progresivas.
-- Conversiones de decimal a binario y de binario a decimal.
+- 17 misiones progresivas divididas en cinco capítulos narrativos.
+- Personajes recurrentes y explicaciones breves, con un concepto por nivel.
+- Conversiones entre decimal, binario y hexadecimal.
+- Sumas binarias y práctica de los flags Zero, Carry, Negative y Overflow.
+- Prueba final que combina conversiones, aritmética y flags.
 - Explicaciones, pistas, puntuación, rachas y progreso guardado.
 - Diseño adaptable para computadora y teléfono.
 - Sonidos generados localmente con Web Audio API.
