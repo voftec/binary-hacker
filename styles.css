@@ -1,16 +1,20 @@
 :root {
-  --bg: #050a08;
-  --panel: rgba(7, 18, 14, 0.92);
-  --panel-soft: rgba(14, 30, 23, 0.82);
-  --line: rgba(115, 255, 177, 0.2);
-  --green: #6dffad;
-  --green-strong: #2eff83;
-  --green-dim: #369b64;
-  --text: #e4fbed;
-  --muted: #789487;
-  --red: #ff5f67;
-  --amber: #ffc857;
-  --shadow: 0 0 40px rgba(46, 255, 131, 0.08);
+  --bg: #090716;
+  --panel: #151228;
+  --panel-soft: #211a3f;
+  --line: #4b3f82;
+  --green: #52ff8f;
+  --green-strong: #31f2ff;
+  --green-dim: #2e9b6f;
+  --text: #f7f2dc;
+  --muted: #a496c9;
+  --red: #ff526f;
+  --amber: #ffd15c;
+  --cyan: #31f2ff;
+  --purple: #8a61ff;
+  --shadow: 10px 10px 0 rgba(0, 0, 0, 0.38);
+  --pixel-font: "Press Start 2P", monospace;
+  --text-font: "VT323", monospace;
 }
 
 * {
@@ -28,9 +32,9 @@ body {
   overflow-x: hidden;
   color: var(--text);
   background:
-    radial-gradient(circle at 75% 15%, rgba(28, 90, 56, 0.2), transparent 28rem),
-    linear-gradient(135deg, #030705, #07100c 58%, #040806);
-  font-family: "IBM Plex Mono", monospace;
+    radial-gradient(circle at 75% 15%, rgba(60, 43, 132, 0.34), transparent 28rem),
+    linear-gradient(135deg, #080615, #120d2c 58%, #090716);
+  font-family: var(--text-font);
 }
 
 button,
@@ -107,7 +111,7 @@ button {
 }
 
 .brand strong {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--pixel-font);
   letter-spacing: 0.12em;
 }
 
@@ -184,9 +188,9 @@ button {
 h1,
 h2 {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  font-family: var(--pixel-font);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
 }
 
 h1 {
@@ -1116,5 +1120,415 @@ h2 span {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* --- Retro pixel-art skin --- */
+body {
+  image-rendering: pixelated;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(255, 255, 255, 0.16) 1px, transparent 2px) 0 0 / 80px 80px,
+    radial-gradient(circle at 34px 58px, rgba(49, 242, 255, 0.12) 1px, transparent 2px) 0 0 / 120px 120px,
+    linear-gradient(transparent 70%, rgba(21, 15, 44, 0.95));
+  opacity: 0.7;
+}
+
+#matrix {
+  opacity: 0.13;
+}
+
+.app-shell,
+.terminal-card,
+.victory-card,
+.primary-button,
+.icon-button,
+.chapter-badge,
+.power-chip,
+.avatar,
+.character-avatar,
+.operator-card,
+.sidebar-tip,
+.lesson-box,
+.answer-row,
+.final-stats,
+.certificate {
+  border-radius: 0;
+}
+
+.terminal-card,
+.victory-card,
+.sidebar-tip,
+.lesson-box,
+.answer-row,
+.final-stats {
+  border: 3px solid var(--line);
+  box-shadow: 8px 8px 0 #03020a;
+  backdrop-filter: none;
+}
+
+.terminal-card {
+  background:
+    linear-gradient(135deg, rgba(82, 255, 143, 0.05), transparent 36%),
+    var(--panel);
+}
+
+.brand-mark,
+.avatar,
+.character-avatar {
+  position: relative;
+  border: 3px solid var(--green);
+  background: #0b071a;
+  box-shadow: 4px 4px 0 #03020a;
+  font-family: var(--pixel-font);
+  image-rendering: pixelated;
+}
+
+.brand-mark::after,
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background:
+    linear-gradient(var(--green), var(--green)) 6px 6px / 6px 6px,
+    linear-gradient(var(--green), var(--green)) 18px 6px / 6px 6px,
+    linear-gradient(var(--cyan), var(--cyan)) 6px 18px / 18px 6px;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+}
+
+.brand-mark {
+  color: transparent;
+}
+
+.brand-mark::before {
+  content: "01";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  color: var(--green);
+}
+
+.system-state,
+.eyebrow,
+.terminal-header,
+.brand small,
+.operator-card small,
+.mission-nav li,
+.sidebar-tip span,
+.challenge-label,
+#answer-form label,
+#input-hint,
+.trust-row,
+.streak,
+.score-panel span,
+.timer-panel span,
+.final-stats span,
+.certificate,
+.mission-code {
+  font-family: var(--pixel-font);
+}
+
+.system-state,
+.terminal-header,
+.brand small,
+.operator-card small,
+.challenge-label,
+#answer-form label,
+#input-hint,
+.trust-row,
+.streak,
+.score-panel span,
+.timer-panel span,
+.final-stats span,
+.certificate {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-size: 10px;
+  text-shadow: 2px 2px 0 #03020a;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5.2vw, 5rem);
+  text-shadow: 5px 5px 0 #03020a;
+}
+
+.workspace h2 {
+  font-size: clamp(1.15rem, 2.1vw, 2.2rem);
+  text-shadow: 3px 3px 0 #03020a;
+}
+
+h1 span,
+h2 span {
+  text-shadow: 5px 5px 0 #03020a, 0 0 28px rgba(82, 255, 143, 0.24);
+}
+
+.lede,
+.story-log,
+.lesson-box p,
+.challenge-question,
+.comms-panel p,
+.sidebar-tip p,
+.victory-card > p:not(.eyebrow) {
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.primary-button,
+.icon-button,
+.text-button,
+.chapter-badge,
+.power-chip,
+.submit-button {
+  font-family: var(--pixel-font);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.primary-button {
+  border: 3px solid #041108;
+  color: #041108;
+  background:
+    linear-gradient(var(--green), var(--green)) padding-box,
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.16) 0 4px, transparent 4px 8px);
+  box-shadow: 6px 6px 0 #03020a, inset 0 -8px 0 rgba(0, 0, 0, 0.18);
+}
+
+.primary-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 #03020a, inset 0 -6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.primary-button:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 #03020a;
+}
+
+.icon-button,
+.text-button {
+  border: 3px solid var(--line);
+  color: var(--cyan);
+  background: #0b071a;
+  box-shadow: 4px 4px 0 #03020a;
+}
+
+.text-button {
+  border-bottom-width: 3px;
+}
+
+.chapter-badge {
+  border: 3px solid #041108;
+  box-shadow: 4px 4px 0 #03020a;
+}
+
+.terminal-header {
+  background: #241c4a;
+  color: #b9addd;
+  border-bottom: 3px solid var(--line);
+}
+
+.window-dots i {
+  border-radius: 0;
+  box-shadow: 1px 1px 0 #03020a;
+}
+
+.window-dots i:first-child { background: var(--red); }
+.window-dots i:nth-child(2) { background: var(--amber); }
+.window-dots i:last-child { background: var(--green); }
+
+.pixel-city {
+  height: 54px;
+  border-bottom: 3px solid var(--line);
+  background:
+    linear-gradient(var(--purple), var(--purple)) 18px 26px / 34px 28px,
+    linear-gradient(#4a37a1, #4a37a1) 62px 14px / 42px 40px,
+    linear-gradient(var(--cyan), var(--cyan)) 118px 32px / 28px 22px,
+    linear-gradient(#33266f, #33266f) 158px 20px / 58px 34px,
+    linear-gradient(#1f1742, #1f1742) 0 100% / 100% 28px;
+  background-repeat: no-repeat;
+}
+
+.pixel-city span {
+  position: relative;
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 8px 10px;
+  background: var(--amber);
+  box-shadow: 16px 0 var(--amber), 32px 0 var(--cyan), 54px 6px var(--amber);
+  animation: blink 1.6s steps(1) infinite;
+}
+
+.boot-log {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.prompt-line i {
+  border-radius: 0;
+}
+
+.mission-nav li::before,
+.mission-nav li.complete::before {
+  border: 3px solid var(--line);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #03020a;
+}
+
+.mission-nav li.active::before {
+  box-shadow: 3px 3px 0 #03020a;
+}
+
+.comms-panel {
+  border: 3px solid var(--line);
+  background: #0b071a;
+  box-shadow: 6px 6px 0 #03020a;
+}
+
+.character-avatar {
+  font-size: 9px;
+  overflow: hidden;
+}
+
+.character-avatar::before,
+.character-avatar::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 12px;
+  background: var(--green);
+}
+
+.character-avatar::before { left: 10px; }
+.character-avatar::after { right: 10px; }
+
+.character-avatar[data-character="WD"]::before,
+.character-avatar[data-character="WD"]::after {
+  background: var(--red);
+  box-shadow: 0 -7px 0 var(--red);
+}
+
+.character-avatar[data-character="BT"]::before,
+.character-avatar[data-character="BT"]::after {
+  background: var(--cyan);
+}
+
+.lesson-box {
+  border-color: var(--amber);
+  background: #241b28;
+}
+
+.lesson-label {
+  color: #1a1010;
+  background: var(--amber);
+  border-right: 3px solid var(--line);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.challenge-value {
+  font-family: var(--pixel-font);
+  letter-spacing: 0.08em;
+  text-shadow: 6px 6px 0 #03020a, 0 0 24px rgba(82, 255, 143, 0.2);
+}
+
+.power-chip {
+  color: var(--muted);
+  border: 3px solid var(--line);
+  background: #0b071a;
+  box-shadow: 3px 3px 0 #03020a;
+}
+
+.power-chip.active {
+  color: #041108;
+  border-color: #041108;
+  background: var(--green);
+}
+
+.answer-row {
+  border: 3px solid var(--green);
+  background: #05030d;
+}
+
+.shell-prompt,
+#answer-input {
+  font-family: var(--pixel-font);
+}
+
+#answer-input {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+}
+
+.progress-track {
+  height: 12px;
+  border: 3px solid var(--line);
+  background: #05030d;
+}
+
+.progress-fill {
+  background: repeating-linear-gradient(90deg, var(--green) 0 8px, var(--cyan) 8px 10px);
+  box-shadow: none;
+  transition: width 500ms steps(8);
+}
+
+.feedback {
+  font-size: 1.25rem;
+}
+
+.feedback.visible {
+  border-width: 3px;
+  box-shadow: 5px 5px 0 #03020a;
+}
+
+.victory-icon {
+  border: 4px solid var(--green);
+  border-radius: 0;
+  font-family: var(--pixel-font);
+  box-shadow: 6px 6px 0 #03020a;
+}
+
+.final-stats div:not(:last-child) {
+  border-right: 3px solid var(--line);
+}
+
+.certificate {
+  border: 3px dashed var(--cyan);
+}
+
+@media (max-width: 740px) {
+  h1 {
+    font-size: clamp(2rem, 12vw, 3.8rem);
+  }
+
+  .lede,
+  .story-log,
+  .lesson-box p,
+  .challenge-question,
+  .comms-panel p,
+  .sidebar-tip p,
+  .victory-card > p:not(.eyebrow) {
+    font-size: 1.2rem;
+  }
+
+  .workspace-head {
+    flex-wrap: wrap;
   }
 }

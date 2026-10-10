@@ -698,6 +698,7 @@ function renderMission() {
   $("#mission-code").textContent = mission.code;
   $("#mission-title").textContent = mission.title;
   $("#character-avatar").textContent = mission.character[0];
+  $("#character-avatar").dataset.character = mission.character[0];
   $("#character-name").textContent = mission.character[1];
   $("#character-dialogue").textContent = mission.dialogue;
   $("#terminal-path").textContent = `root@ghost:/node_${String(state.mission + 1).padStart(2, "0")}`;
