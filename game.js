@@ -1,12 +1,12 @@
 const missions = [
   {
-    chapter: "CAPÍTULO 1 // DESPERTAR",
-    code: "MISIÓN 01 // EL PRIMER BIT",
+    chapter: "ZONA 1 // PERÍMETRO",
+    code: "TERMINAL 01 // EL PRIMER BIT",
     title: "Enciende la señal",
     nav: "El primer bit",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "No memorices todavía. Un bit es solo un interruptor: 0 apagado, 1 encendido.",
-    story: ["Tu comunicador está apagado.", "Envía un bit encendido para contactar a <b>Ghost Network</b>."],
+    story: ["Llegas de noche al perímetro de la base enemiga.", "Activa tu radio enviando un bit <b>encendido</b>."],
     lesson: "BIT significa binary digit. Solo puede tener dos estados: 0 o 1.",
     label: "ESTADO SOLICITADO",
     value: "ON",
@@ -18,13 +18,13 @@ const missions = [
     powers: [1],
   },
   {
-    chapter: "CAPÍTULO 1 // DESPERTAR",
-    code: "MISIÓN 02 // CUATRO INTERRUPTORES",
+    chapter: "ZONA 1 // PERÍMETRO",
+    code: "TERMINAL 02 // CUATRO INTERRUPTORES",
     title: "Descubre el valor de posición",
     nav: "Posiciones",
-    character: ["BT", "BYTE // DRON"],
+    character: ["BT", "BYTE // DRON EXPLORADOR"],
     dialogue: "Bip. Cada posición hacia la izquierda vale el doble: 1, 2, 4, 8.",
-    story: ["Nyx abre un panel con cuatro interruptores.", "La secuencia activa las posiciones <b>4 y 1</b>."],
+    story: ["Una caja de fusibles controla la cerca eléctrica.", "La secuencia activa las posiciones <b>4 y 1</b>."],
     lesson: "De derecha a izquierda, cuatro bits valen 1, 2, 4 y 8. Solo sumas donde hay un 1.",
     label: "SEÑAL BINARIA",
     value: "0101",
@@ -36,13 +36,13 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 1 // DESPERTAR",
-    code: "MISIÓN 03 // CONSTRUIR UNA CLAVE",
+    chapter: "ZONA 1 // PERÍMETRO",
+    code: "TERMINAL 03 // CONSTRUIR UNA CLAVE",
     title: "Piensa con interruptores",
     nav: "Construir clave",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Para construir 13, elige valores que sumen 13. No hay nada que memorizar.",
-    story: ["El primer cerrojo pide una clave de cuatro bits.", "El objetivo decimal es <b>13</b>."],
+    story: ["El candado de la reja pide un código de cuatro bits.", "El código decimal es <b>13</b>."],
     lesson: "Busca la potencia más grande que quepa, réstala y continúa con el resto.",
     label: "OBJETIVO DECIMAL",
     value: "13",
@@ -54,13 +54,13 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 1 // DESPERTAR",
-    code: "MISIÓN 04 // PRIMER BYTE",
+    chapter: "ZONA 1 // PERÍMETRO",
+    code: "TERMINAL 04 // PRIMER BYTE",
     title: "Amplía tu visión",
     nav: "Primer byte",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Ocho bits forman un byte. Es la misma idea, solo aparecen 16, 32, 64 y 128.",
-    story: ["La puerta acepta una señal de ocho bits.", "Byte interceptó <b>00011010</b>."],
+    story: ["La puerta del edificio acepta una señal de ocho bits.", "Byte interceptó <b>00011010</b>."],
     lesson: "Un byte tiene 8 bits y puede representar valores entre 0 y 255.",
     label: "BYTE INTERCEPTADO",
     value: "00011010",
@@ -72,13 +72,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 2 // ARITMÉTICA",
-    code: "MISIÓN 05 // SUMA LIMPIA",
+    chapter: "ZONA 2 // CUARTEL",
+    code: "TERMINAL 05 // SUMA LIMPIA",
     title: "Suma como una máquina",
     nav: "Suma limpia",
-    character: ["BT", "BYTE // DRON"],
+    character: ["BT", "BYTE // DRON EXPLORADOR"],
     dialogue: "Regla rápida: 0+0=0, 0+1=1, 1+1=10. En ese último caso escribes 0 y llevas 1.",
-    story: ["El sistema divide la clave en dos señales.", "Debes combinarlas con una <b>suma binaria</b>."],
+    story: ["Dentro del cuartel, la alarma divide su clave en dos señales.", "Combínalas con una <b>suma binaria</b>."],
     lesson: "Suma de derecha a izquierda, igual que en decimal. Cuando obtienes 10, llevas 1.",
     label: "SUMA BINARIA",
     value: "0101 + 0010",
@@ -90,11 +90,11 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 2 // ARITMÉTICA",
-    code: "MISIÓN 06 // LLEVAR UNO",
+    chapter: "ZONA 2 // CUARTEL",
+    code: "TERMINAL 06 // LLEVAR UNO",
     title: "Controla el acarreo",
     nav: "Llevar uno",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Cuando 1+1 produce 10, el cero queda abajo y el uno viaja a la siguiente columna.",
     story: ["El Warden fuerza una suma al límite.", "No pierdas el bit que se <b>lleva</b>."],
     lesson: "El bit que pasa a la siguiente columna se llama carry o acarreo.",
@@ -108,13 +108,13 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 2 // ARITMÉTICA",
-    code: "MISIÓN 07 // CLAVE DE 42",
+    chapter: "ZONA 2 // CUARTEL",
+    code: "TERMINAL 07 // CLAVE DE 42",
     title: "Construye un byte completo",
     nav: "Clave de 42",
-    character: ["BT", "BYTE // DRON"],
-    dialogue: "Bip. Divide el objetivo en potencias de dos. Yo vigilo la puerta.",
-    story: ["El archivo Ghost está cifrado.", "Su identificador decimal es <b>42</b>."],
+    character: ["BT", "BYTE // DRON EXPLORADOR"],
+    dialogue: "Bip. Divide el objetivo en potencias de dos. Yo vigilo el pasillo.",
+    story: ["El armero está sellado con un código decimal.", "Su identificador es <b>42</b>."],
     lesson: "Para pasar decimal a binario, activa las potencias de 2 que sumen el objetivo.",
     label: "OBJETIVO DECIMAL",
     value: "42",
@@ -126,13 +126,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 2 // ARITMÉTICA",
-    code: "MISIÓN 08 // PAQUETE FANTASMA",
+    chapter: "ZONA 2 // CUARTEL",
+    code: "TERMINAL 08 // PAQUETE FANTASMA",
     title: "Decodifica una dirección",
     nav: "Paquete fantasma",
-    character: ["WD", "WARDEN // SISTEMA"],
-    dialogue: "Intruso detectado. Demuestra que puedes leer mi dirección o serás expulsado.",
-    story: ["El Warden bloquea el túnel.", "Solo revela el byte <b>11001001</b>."],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "Intruso detectado. Lee la frecuencia de mi patrulla o serás capturado.",
+    story: ["Una patrulla del Warden bloquea el pasillo.", "Su radio transmite el byte <b>11001001</b>."],
     lesson: "Para pasar binario a decimal, suma los valores de todas las posiciones activas.",
     label: "DIRECCIÓN BINARIA",
     value: "11001001",
@@ -144,13 +144,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 3 // HEXADECIMAL",
-    code: "MISIÓN 09 // NUEVO ALFABETO",
+    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    code: "TERMINAL 09 // NUEVO ALFABETO",
     title: "Conoce hexadecimal",
     nav: "Nuevo alfabeto",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Hexadecimal usa 16 símbolos: 0 al 9 y después A, B, C, D, E, F.",
-    story: ["La zona profunda no muestra bytes completos.", "Agrupa cada cuatro bits en un símbolo."],
+    story: ["Entras al archivo cifrado: aquí todo está en hexadecimal.", "Cada cuatro bits se agrupan en un solo símbolo."],
     lesson: "A vale 10, B 11, C 12, D 13, E 14 y F 15. Cuatro bits forman un dígito hexadecimal.",
     label: "GRUPO DE 4 BITS",
     value: "1010",
@@ -162,13 +162,13 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 3 // HEXADECIMAL",
-    code: "MISIÓN 10 // DOS NIBBLES",
+    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    code: "TERMINAL 10 // DOS NIBBLES",
     title: "Traduce hex a binario",
     nav: "Hex a binario",
-    character: ["BT", "BYTE // DRON"],
+    character: ["BT", "BYTE // DRON EXPLORADOR"],
     dialogue: "Un byte se divide en dos grupos de cuatro bits. Tradúcelos por separado y únelos.",
-    story: ["La clave aparece como <b>3F</b>.", "Cada símbolo oculta cuatro bits."],
+    story: ["Encuentras una caja fuerte con teclado hexadecimal.", "La pantalla muestra <b>3F</b>."],
     lesson: "3 es 0011. F vale 15 y es 1111. Luego unes ambos grupos.",
     label: "CLAVE HEXADECIMAL",
     value: "3F",
@@ -180,13 +180,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 3 // HEXADECIMAL",
-    code: "MISIÓN 11 // COMPRIMIR EL BYTE",
+    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    code: "TERMINAL 11 // COMPRIMIR EL BYTE",
     title: "Traduce binario a hex",
     nav: "Binario a hex",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Separa desde la derecha en grupos de cuatro. Cada grupo se convierte por su cuenta.",
-    story: ["El túnel transmite <b>11010110</b>.", "Comprímelo en dos símbolos hexadecimales."],
+    story: ["Un transmisor enemigo envía datos por radio.", "Comprime <b>11010110</b> en dos símbolos hexadecimales."],
     lesson: "1101 vale 13, que es D. 0110 vale 6. Mantén el mismo orden.",
     label: "BYTE BINARIO",
     value: "11010110",
@@ -198,13 +198,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 3 // HEXADECIMAL",
-    code: "MISIÓN 12 // VALOR MÁXIMO",
+    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    code: "TERMINAL 12 // VALOR MÁXIMO",
     title: "Conecta los tres sistemas",
     nav: "Valor máximo",
-    character: ["WD", "WARDEN // SISTEMA"],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
     dialogue: "Última prueba de traducción. Un valor, tres formas de escribirlo.",
-    story: ["El Warden libera el byte máximo: <b>11111111</b>.", "En decimal vale 255."],
+    story: ["El Warden cierra el archivo con el byte máximo.", "En decimal vale <b>255</b>."],
     lesson: "1111 es F. Como el byte tiene dos grupos 1111, su forma hexadecimal repite ese símbolo.",
     label: "VALOR DECIMAL",
     value: "255",
@@ -216,11 +216,11 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 4 // FLAGS",
-    code: "MISIÓN 13 // ZERO Y CARRY",
+    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    code: "TERMINAL 13 // ZERO Y CARRY",
     title: "Lee el estado del procesador",
     nav: "Zero y Carry",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Los flags son luces de estado. Z dice resultado cero. C dice que salió un acarreo del espacio disponible.",
     story: ["Trabajamos con registros de <b>4 bits</b>.", "La suma produce cinco bits, pero el registro conserva solo cuatro."],
     lesson: "Z se activa si el resultado guardado es 0000. C se activa si aparece un bit extra a la izquierda.",
@@ -234,11 +234,11 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 4 // FLAGS",
-    code: "MISIÓN 14 // NEGATIVE",
+    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    code: "TERMINAL 14 // NEGATIVE",
     title: "Detecta un resultado negativo",
     nav: "Negative",
-    character: ["BT", "BYTE // DRON"],
+    character: ["BT", "BYTE // DRON EXPLORADOR"],
     dialogue: "En números con signo, el bit más a la izquierda indica el signo. Si queda en 1, se activa N.",
     story: ["El procesador interpreta los cuatro bits con signo.", "Observa el bit más significativo del resultado."],
     lesson: "N se activa cuando el bit más a la izquierda del resultado es 1.",
@@ -252,11 +252,11 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 4 // FLAGS",
-    code: "MISIÓN 15 // OVERFLOW",
+    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    code: "TERMINAL 15 // OVERFLOW",
     title: "Distingue carry de overflow",
     nav: "Overflow",
-    character: ["NX", "NYX // MENTORA"],
+    character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Overflow no significa simplemente llevar uno. Se activa cuando el resultado con signo ya no cabe.",
     story: ["En 4 bits con signo, el mayor positivo es <b>0111, que vale 7</b>.", "Sumar uno produce un patrón negativo."],
     lesson: "V se activa si positivo + positivo da negativo, o negativo + negativo da positivo.",
@@ -270,12 +270,12 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 4 // FLAGS",
-    code: "MISIÓN 16 // CONTROL DE ESTADO",
+    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    code: "TERMINAL 16 // CONTROL DE ESTADO",
     title: "Comprueba los cuatro flags",
     nav: "Control de estado",
-    character: ["WD", "WARDEN // SISTEMA"],
-    dialogue: "Prueba final. Calcula la suma y decide el estado sin ayuda de la red.",
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "Último cerrojo de la sala. Calcula la suma y decide los flags sin ayuda.",
     story: ["El registro sigue siendo de <b>4 bits</b>.", "El bit extra no se guarda, pero sí afecta los flags."],
     lesson: "Revisa en orden: resultado cero, acarreo externo, bit de signo y overflow con signo.",
     label: "SUMA FINAL",
@@ -288,16 +288,13 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "CAPÍTULO 5 // PRUEBA FINAL",
-    code: "MISIÓN 17 // ACCESO ROOT",
+    chapter: "ZONA 5 // SÓTANO // BOMBA",
+    code: "TERMINAL 17 // ACCESO ROOT",
     title: "Conecta todo lo aprendido",
     nav: "Acceso root",
-    character: ["NX", "NYX // MENTORA"],
-    dialogue: "El Warden activó una bomba digital. Convierte, suma y analiza antes de que el contador llegue a cero.",
-    story: [
-      "La carga está conectada al núcleo de Ghost Network.",
-      "Calcula el resultado y sus flags para enviar el <b>código de desactivación</b>.",
-    ],
+    character: ["NX", "CMDTE. NYX // MANDO"],
+    dialogue: "La bomba está armada. Convierte, suma y analiza los flags antes de que el contador llegue a cero.",
+    story: ["El Warden plantó una bomba en el sótano.", "Calcula el resultado y sus flags para enviar el <b>código de desactivación</b>."],
     lesson: "Convierte 7F y 01 a binario, suma los bytes, vuelve a hexadecimal y revisa Z, C, N y V.",
     label: "OPERACIÓN MAESTRA",
     value: "7F + 01",
@@ -312,6 +309,9 @@ const missions = [
 
 const state = {
   mission: 0,
+  active: 0,
+  chapter: 0,
+  defenseWave: 0,
   score: 0,
   attempts: 0,
   correct: 0,
@@ -326,14 +326,19 @@ const state = {
 const $ = (selector) => document.querySelector(selector);
 const introScreen = $("#intro-screen");
 const gameScreen = $("#game-screen");
+const defenseScreen = $("#defense-screen");
 const victoryScreen = $("#victory-screen");
+const missionModal = $("#mission-modal");
 const answerInput = $("#answer-input");
 const feedback = $("#feedback");
-const storageKey = "binary-hacker-progress-v1";
+const storageKey = "binary-hacker-progress-v2";
+const BOMB_MISSION = missions.length - 1;
 let audioContext;
 
 function setScreen(screen) {
-  [introScreen, gameScreen, victoryScreen].forEach((item) => item.classList.remove("active"));
+  [introScreen, gameScreen, defenseScreen, victoryScreen].forEach((item) =>
+    item.classList.remove("active"),
+  );
   screen.classList.add("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -343,6 +348,8 @@ function saveProgress() {
     storageKey,
     JSON.stringify({
       mission: state.mission,
+      chapter: state.chapter,
+      defenseWave: state.defenseWave,
       score: state.score,
       attempts: state.attempts,
       correct: state.correct,
@@ -354,9 +361,9 @@ function saveProgress() {
 function loadProgress() {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (!saved || saved.mission >= missions.length) return false;
+    if (!saved) return false;
     Object.assign(state, saved);
-    return saved.mission > 0 || saved.score > 0;
+    return saved.mission > 0 || saved.score > 0 || saved.chapter > 0;
   } catch {
     return false;
   }
@@ -366,6 +373,9 @@ function resetState() {
   clearMissionTimer();
   Object.assign(state, {
     mission: 0,
+    active: 0,
+    chapter: 0,
+    defenseWave: 0,
     score: 0,
     attempts: 0,
     correct: 0,
@@ -376,6 +386,13 @@ function resetState() {
     timerId: null,
   });
   localStorage.removeItem(storageKey);
+}
+
+function updateScore() {
+  const text = String(Math.max(0, state.score)).padStart(4, "0");
+  $("#score").textContent = text;
+  $("#defense-score").textContent = text;
+  $("#streak").textContent = state.streak;
 }
 
 function randomInt(min, max) {
@@ -391,8 +408,53 @@ function hex(value) {
 }
 
 function getMission() {
-  return state.currentVariant || missions[state.mission];
+  return state.currentVariant || missions[state.active];
 }
+
+function addWithFlags(a, b, bits) {
+  const mask = 2 ** bits - 1;
+  const sign = 2 ** (bits - 1);
+  const raw = a + b;
+  const stored = raw & mask;
+  const carry = raw > mask;
+  const overflow = (a & sign) === (b & sign) && (stored & sign) !== (a & sign);
+  const flags =
+    (stored === 0 ? "Z" : "") + (carry ? "C" : "") + (stored & sign ? "N" : "") + (overflow ? "V" : "");
+  return { a, b, stored, carry, overflow, flags };
+}
+
+function sampleFlagSum(bits, target) {
+  for (let i = 0; i < 4000; i += 1) {
+    const sum = addWithFlags(randomInt(1, 2 ** bits - 1), randomInt(1, 2 ** bits - 1), bits);
+    if (sum.flags === target) return sum;
+  }
+  return null;
+}
+
+function flagSumText(sum, bits) {
+  return `${binary(sum.a, bits)} + ${binary(sum.b, bits)} = ${sum.carry ? "1 " : ""}${binary(sum.stored, bits)}`;
+}
+
+function flagExplain(sum, bits) {
+  const sign = 2 ** (bits - 1);
+  return [
+    `Guardado: ${binary(sum.stored, bits)}.`,
+    `Z ${sum.stored === 0 ? "✓ es cero" : "✗ no es cero"}`,
+    `C ${sum.carry ? "✓ salió un bit extra" : "✗ sin bit extra"}`,
+    `N ${sum.stored & sign ? "✓ primer bit en 1" : "✗ primer bit en 0"}`,
+    `V ${sum.overflow ? "✓ el signo cambió de forma imposible" : "✗ el signo es coherente"}`,
+  ].join(" · ");
+}
+
+const variantLessons = {
+  9: "Cada símbolo hexadecimal se convierte en 4 bits. Después unes los dos grupos.",
+  10: "Separa el byte en dos grupos de 4 bits y convierte cada grupo a un símbolo hex.",
+  11: "Pasa el número a binario, divídelo en dos grupos de 4 bits y convierte cada uno a hex.",
+  12: "Z: el resultado guardado es 0000. C: aparece un bit extra a la izquierda.",
+  13: "N se activa cuando el primer bit del resultado guardado es 1.",
+  14: "V: positivo + positivo da negativo, o negativo + negativo da positivo.",
+  16: "Convierte ambos valores a binario, suma los bytes, vuelve a hex y revisa Z, C, N y V.",
+};
 
 function generatePracticeVariant(index) {
   const base = missions[index];
@@ -400,6 +462,8 @@ function generatePracticeVariant(index) {
     ...base,
     code: `${base.code} // PRÁCTICA`,
     dialogue: "Nueva combinación. Resuelve con el mismo método, no con la respuesta anterior.",
+    story: [base.story[0], "Nueva lectura interceptada: mismo método, otros números."],
+    lesson: variantLessons[index] || base.lesson,
   };
 
   if (index === 0) {
@@ -434,6 +498,7 @@ function generatePracticeVariant(index) {
     return {
       ...variant,
       value: String(value),
+      question: `Escribe ${value} en binario usando ${bits} bits.`,
       answer: encoded,
       hint: `Busca qué potencias de dos suman ${value}.`,
       explain: `${value} se representa como ${encoded}.`,
@@ -454,13 +519,12 @@ function generatePracticeVariant(index) {
   }
 
   if (index === 5) {
-    const examples = [
-      [3, 1],
-      [5, 3],
-      [11, 1],
-      [6, 2],
-    ];
-    const [left, right] = examples[randomInt(0, examples.length - 1)];
+    let left;
+    let right;
+    do {
+      left = randomInt(1, 14);
+      right = randomInt(1, 15 - left);
+    } while ((left & right) === 0);
     const result = left + right;
     return {
       ...variant,
@@ -488,6 +552,7 @@ function generatePracticeVariant(index) {
     return {
       ...variant,
       value: hex(value),
+      question: `Convierte ${hex(value)} a binario usando 8 bits.`,
       answer: binary(value, 8),
       hint: `Convierte por separado ${hex(value)[0]} y ${hex(value)[1]}.`,
       explain: `${hex(value)} en hexadecimal es ${binary(value, 8)} en binario.`,
@@ -510,64 +575,139 @@ function generatePracticeVariant(index) {
     return {
       ...variant,
       value: String(value),
+      question: `Escribe ${value} en hexadecimal.`,
       answer: value.toString(16).toUpperCase(),
       hint: `${value} en binario es ${binary(value, 8)}. Divide el byte en dos grupos.`,
       explain: `${value} en decimal es ${value.toString(16).toUpperCase()} en hexadecimal.`,
     };
   }
 
-  const flagVariants = {
-    12: [
-      ["1010 + 0110 = 1 0000", "ZC", "El registro queda en cero y hubo acarreo."],
-      ["1100 + 0100 = 1 0000", "ZC", "El registro queda en cero y hubo acarreo."],
-    ],
-    13: [
-      ["1001 + 0010 = 1011", "N", "El resultado conserva el bit de signo en 1."],
-      ["1010 + 0001 = 1011", "N", "El resultado conserva el bit de signo en 1."],
-    ],
-    14: [
-      ["0110 + 0010 = 1000", "NV", "Dos positivos produjeron un patrón negativo."],
-      ["0101 + 0011 = 1000", "NV", "Dos positivos produjeron un patrón negativo."],
-    ],
-    15: [
-      ["1101 + 0100 = 1 0001", "C", "Solo sale un acarreo del registro."],
-      ["1010 + 0111 = 1 0001", "C", "Solo sale un acarreo del registro."],
-    ],
-  };
-
-  if (flagVariants[index]) {
-    const [value, answer, explanation] =
-      flagVariants[index][randomInt(0, flagVariants[index].length - 1)];
+  const flagTargets = { 12: "ZC", 13: "N", 14: "NV", 15: "C" };
+  if (flagTargets[index]) {
+    const sum = sampleFlagSum(4, flagTargets[index]);
     return {
       ...variant,
-      value,
-      answer,
+      value: flagSumText(sum, 4),
+      question: "¿Qué flags se activan? Escribe sus letras.",
+      answer: sum.flags,
       hint: "Revisa Z, C, N y V uno por uno.",
-      explain: explanation,
+      explain: flagExplain(sum, 4),
     };
   }
 
-  const finalVariants = [
-    ["7F", "01", "80", "NV"],
-    ["FF", "01", "00", "ZC"],
-    ["80", "80", "00", "ZCV"],
-    ["40", "40", "80", "NV"],
-  ];
-  const [left, right, result, flags] =
-    finalVariants[randomInt(0, finalVariants.length - 1)];
+  const finalTargets = ["NV", "ZC", "C", "N", "CN", "CV"];
+  let sum = null;
+  while (!sum) sum = sampleFlagSum(8, finalTargets[randomInt(0, finalTargets.length - 1)]);
+  const [left, right, result] = [hex(sum.a), hex(sum.b), hex(sum.stored)];
   return {
     ...variant,
     value: `${left} + ${right}`,
-    answer: `${result}:${flags}`,
+    answer: `${result}:${sum.flags}`,
     hint: `Convierte ${left} y ${right} a bytes, suma y revisa cada flag.`,
-    explain: `${left} + ${right} = ${result}. Los flags activos son ${flags.split("").join(", ")}.`,
+    explain: `${left} + ${right}: ${binary(sum.a, 8)} + ${binary(sum.b, 8)} = ${sum.carry ? "1 " : ""}${binary(sum.stored, 8)} → ${result}. ${flagExplain(sum, 8).split(" · ").slice(1).join(" · ")}.`,
   };
+}
+
+function inputConfigFor(mission) {
+  return {
+    binary: {
+      maxLength: mission.powers.length,
+      placeholder: "0".repeat(mission.powers.length),
+      hint: `Usa exactamente ${mission.powers.length} bits: solo 0 y 1.`,
+      inputMode: "numeric",
+    },
+    decimal: { maxLength: 3, placeholder: "000", hint: "Escribe el número decimal.", inputMode: "numeric" },
+    hex: {
+      maxLength: 2,
+      placeholder: "FF",
+      hint: "Usa números y, cuando haga falta, letras de A a F.",
+      inputMode: "text",
+    },
+    flags: {
+      maxLength: 7,
+      placeholder: "ZCNV",
+      hint: "Escribe las letras activas: Z, C, N o V. El orden no importa.",
+      inputMode: "text",
+    },
+    final: {
+      maxLength: 7,
+      placeholder: "80:NV",
+      hint: "Formato: resultado hexadecimal, dos puntos y flags activos.",
+      inputMode: "text",
+    },
+  }[mission.inputMode];
+}
+
+function filterInput(mode, value) {
+  if (mode === "binary") return value.replace(/[^01]/g, "");
+  if (mode === "decimal") return value.replace(/\D/g, "");
+  if (mode === "hex") return value.replace(/[^0-9a-f]/gi, "").toUpperCase();
+  if (mode === "flags") return value.replace(/[^zcnv,\s]/gi, "").toUpperCase();
+  return value.replace(/[^0-9a-f:zcnv,\s]/gi, "").toUpperCase();
+}
+
+function isValidFormat(mission, raw) {
+  const validators = {
+    binary: new RegExp(`^[01]{${mission.powers.length}}$`),
+    decimal: /^\d+$/,
+    hex: /^[0-9A-Fa-f]{1,2}$/,
+    flags: /^[ZCNVzcnv](?:[\s,]*[ZCNVzcnv])*$/,
+    final: /^[0-9A-Fa-f]{1,2}\s*:\s*[ZCNVzcnv](?:[\s,]*[ZCNVzcnv])*$/,
+  };
+  return validators[mission.inputMode].test(raw.trim());
+}
+
+function formatError(mission) {
+  return {
+    binary: `El código necesita ${mission.powers.length} bits y solo puede contener 0 o 1.`,
+    decimal: "Introduce un número decimal.",
+    hex: "Usa uno o dos símbolos hexadecimales: 0-9 o A-F.",
+    flags: "Usa únicamente las letras Z, C, N o V.",
+    final: "Usa el formato resultado:flags, por ejemplo A2:CN.",
+  }[mission.inputMode];
+}
+
+function sortFlags(flags) {
+  return [...new Set(flags)].sort((a, b) => "ZCNV".indexOf(a) - "ZCNV".indexOf(b)).join("");
+}
+
+function normalizeAnswer(value, type) {
+  const clean = value.trim().replace(/[\s,]+/g, "").toUpperCase();
+  if (type === "decimal") return String(Number(clean));
+  if (type === "hex") return clean.replace(/^0+(?=.)/, "");
+  if (type === "flags") return sortFlags(clean);
+  if (type === "final") {
+    const [result = "", flags = ""] = clean.split(":");
+    return `${result.replace(/^0+(?=.)/, "")}:${sortFlags(flags)}`;
+  }
+  return clean;
+}
+
+function isCorrect(mission, raw) {
+  return normalizeAnswer(raw, mission.inputMode) === normalizeAnswer(mission.answer, mission.inputMode);
 }
 
 function clearMissionTimer() {
   if (state.timerId) clearInterval(state.timerId);
   state.timerId = null;
   $("#timer-panel").hidden = true;
+}
+
+function explodeBomb(message) {
+  clearMissionTimer();
+  state.locked = true;
+  state.streak = 0;
+  updateScore();
+  showFeedback("error", `<b>LA BOMBA EXPLOTÓ</b><br>${message}`);
+  $("#next-button").hidden = true;
+  $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
+  $("#completion-actions").hidden = false;
+  $("#close-mission").hidden = false;
+  missionModal.classList.remove("exploded");
+  void missionModal.offsetWidth;
+  missionModal.classList.add("exploded");
+  beep(90, 0.5, "sawtooth");
+  saveProgress();
 }
 
 function startMissionTimer(seconds = 75) {
@@ -579,19 +719,10 @@ function startMissionTimer(seconds = 75) {
     const secs = String(remaining % 60).padStart(2, "0");
     $("#timer").textContent = `${minutes}:${secs}`;
     if (remaining <= 0) {
-      clearMissionTimer();
-      state.locked = true;
-      state.streak = 0;
-      showFeedback(
-        "error",
-        "<b>LA BOMBA EXPLOTÓ</b><br>La ronda terminó. Ghost Network generará un ejercicio nuevo.",
-      );
-      $("#next-button").hidden = true;
-      $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
-      $("#completion-actions").hidden = false;
-      beep(110, 0.35, "sawtooth");
+      explodeBomb("Se acabó el tiempo. La siguiente simulación tendrá otros valores.");
       return;
     }
+    if (remaining <= 10) beep(880, 0.04, "square");
     remaining -= 1;
   };
   update();
@@ -619,22 +750,6 @@ function playSuccess() {
   setTimeout(() => beep(880, 0.12, "sine"), 180);
 }
 
-function buildMissionList() {
-  $("#mission-list").innerHTML = missions
-    .map(
-      (mission, index) =>
-        `<li data-number="${String(index + 1).padStart(2, "0")}">${mission.nav}</li>`,
-    )
-    .join("");
-}
-
-function updateMissionList() {
-  [...$("#mission-list").children].forEach((item, index) => {
-    item.classList.toggle("complete", index < state.mission);
-    item.classList.toggle("active", index === state.mission);
-  });
-}
-
 function renderPowers(mission) {
   const bits =
     mission.inputMode === "decimal" ? mission.value.padStart(mission.powers.length, "0") : "";
@@ -648,47 +763,19 @@ function renderPowers(mission) {
 
 function renderMission() {
   const mission = getMission();
-  const inputConfig = {
-    binary: {
-      maxLength: mission.powers.length,
-      placeholder: "0".repeat(mission.powers.length),
-      hint: `Usa exactamente ${mission.powers.length} bits: solo 0 y 1.`,
-      inputMode: "numeric",
-    },
-    decimal: {
-      maxLength: 3,
-      placeholder: "000",
-      hint: "Escribe el número decimal.",
-      inputMode: "numeric",
-    },
-    hex: {
-      maxLength: 2,
-      placeholder: "FF",
-      hint: "Usa números y, cuando haga falta, letras de A a F.",
-      inputMode: "text",
-    },
-    flags: {
-      maxLength: 7,
-      placeholder: "ZCNV",
-      hint: "Escribe las letras activas: Z, C, N o V. El orden no importa.",
-      inputMode: "text",
-    },
-    final: {
-      maxLength: 7,
-      placeholder: "80:NV",
-      hint: "Formato: resultado hexadecimal, dos puntos y flags activos.",
-      inputMode: "text",
-    },
-  }[mission.inputMode];
+  const inputConfig = inputConfigFor(mission);
+  const isBomb = state.active === BOMB_MISSION;
   state.hintUsed = false;
   state.locked = false;
   feedback.className = "feedback";
   feedback.textContent = "";
+  missionModal.classList.remove("exploded");
+  missionModal.classList.toggle("bomb", isBomb);
   $("#completion-actions").hidden = true;
   $("#next-button").hidden = false;
-  $("#next-button").textContent =
-    state.mission === missions.length - 1 ? "DESACTIVAR Y ENTRAR →" : "SIGUIENTE MISIÓN →";
+  $("#next-button").textContent = isBomb ? "BOMBA DESACTIVADA →" : "VOLVER AL MAPA →";
   $("#repeat-button").textContent = "OTRA VARIANTE";
+  $("#close-mission").hidden = isBomb;
   answerInput.value = "";
   answerInput.maxLength = inputConfig.maxLength;
   answerInput.placeholder = inputConfig.placeholder;
@@ -701,24 +788,17 @@ function renderMission() {
   $("#character-avatar").dataset.character = mission.character[0];
   $("#character-name").textContent = mission.character[1];
   $("#character-dialogue").textContent = mission.dialogue;
-  $("#terminal-path").textContent = `root@ghost:/node_${String(state.mission + 1).padStart(2, "0")}`;
+  $("#terminal-path").textContent = `base://zona_${state.chapter + 1}/terminal_${String(state.active + 1).padStart(2, "0")}`;
   $("#attempt-label").textContent = `INTENTOS: ${state.attempts}`;
-  $("#operator-level").textContent = String(state.mission + 1).padStart(2, "0");
   $("#story-log").innerHTML = mission.story.map((line) => `<p>&gt; ${line}</p>`).join("");
   $("#lesson-text").textContent = mission.lesson;
   $("#challenge-label").textContent = mission.label;
   $("#challenge-value").textContent = mission.value;
   $("#challenge-question").textContent = mission.question;
-  $("#score").textContent = String(Math.max(0, state.score)).padStart(4, "0");
-  $("#streak").textContent = state.streak;
-  $("#progress-fill").style.width = `${(state.mission / missions.length) * 100}%`;
+  updateScore();
   renderPowers(mission);
-  updateMissionList();
-  if (state.mission === missions.length - 1) {
-    startMissionTimer();
-  } else {
-    clearMissionTimer();
-  }
+  if (isBomb) startMissionTimer();
+  else clearMissionTimer();
   setTimeout(() => answerInput.focus(), 180);
 }
 
@@ -727,114 +807,76 @@ function showFeedback(kind, message) {
   feedback.innerHTML = message;
 }
 
-function normalizeAnswer(value, type) {
-  const clean = value.trim().replace(/[\s,]+/g, "").toUpperCase();
-  if (type === "decimal") return String(Number(clean));
-  if (type === "flags") return [...clean].sort((a, b) => "ZCNV".indexOf(a) - "ZCNV".indexOf(b)).join("");
-  if (type === "final") {
-    const [result = "", flags = ""] = clean.split(":");
-    const orderedFlags = [...flags]
-      .sort((a, b) => "ZCNV".indexOf(a) - "ZCNV".indexOf(b))
-      .join("");
-    return `${result}:${orderedFlags}`;
-  }
-  return clean;
-}
-
 function submitAnswer(event) {
   event.preventDefault();
   if (state.locked) return;
 
   const mission = getMission();
   const rawAnswer = answerInput.value;
-  const answer = normalizeAnswer(rawAnswer, mission.inputMode);
-  const validators = {
-    binary: new RegExp(`^[01]{${mission.powers.length}}$`),
-    decimal: /^\d+$/,
-    hex: /^[0-9A-Fa-f]{1,2}$/,
-    flags: /^[ZCNVzcnv](?:[\s,]*[ZCNVzcnv])*$/,
-    final: /^[0-9A-Fa-f]{1,2}\s*:\s*[ZCNVzcnv](?:[\s,]*[ZCNVzcnv])*$/,
-  };
-  const valid = validators[mission.inputMode].test(rawAnswer.trim());
 
-  if (!valid) {
+  if (!isValidFormat(mission, rawAnswer)) {
     beep(180, 0.12, "sawtooth");
-    showFeedback(
-      "error",
-      `Formato inválido. ${{
-        binary: `La clave necesita ${mission.powers.length} bits y solo puede contener 0 o 1.`,
-        decimal: "Introduce un número decimal.",
-        hex: "Usa uno o dos símbolos hexadecimales: 0-9 o A-F.",
-        flags: "Usa únicamente las letras Z, C, N o V.",
-        final: "Usa el formato resultado:flags, por ejemplo A2:CN.",
-      }[mission.inputMode]}`,
-    );
+    showFeedback("error", `Formato inválido. ${formatError(mission)}`);
     return;
   }
 
   state.attempts += 1;
   $("#attempt-label").textContent = `INTENTOS: ${state.attempts}`;
 
-  if (answer === mission.answer) {
+  if (isCorrect(mission, rawAnswer)) {
     state.locked = true;
     state.correct += 1;
     state.streak += 1;
     const reward = Math.max(50, 150 + state.streak * 20 - (state.hintUsed ? 25 : 0));
     state.score += reward;
-    $("#score").textContent = String(state.score).padStart(4, "0");
-    $("#streak").textContent = state.streak;
-    $("#progress-fill").style.width = `${((state.mission + 1) / missions.length) * 100}%`;
-    showFeedback(
-      "success",
-      `<b>ACCESO CONCEDIDO +${reward}</b><br>${mission.explain}`,
-    );
+    if (state.active === state.mission) state.mission += 1;
+    updateScore();
+    showFeedback("success", `<b>ACCESO CONCEDIDO +${reward}</b><br>${mission.explain}`);
     clearMissionTimer();
     $("#completion-actions").hidden = false;
+    $("#close-mission").hidden = false;
     playSuccess();
     saveProgress();
+    World.refresh();
   } else {
     state.streak = 0;
     state.score = Math.max(0, state.score - 10);
-    $("#score").textContent = String(state.score).padStart(4, "0");
-    $("#streak").textContent = "0";
+    updateScore();
     beep(150, 0.15, "sawtooth");
-    if (state.mission === missions.length - 1) {
-      clearMissionTimer();
-      state.locked = true;
-      showFeedback(
-        "error",
-        "<b>LA BOMBA EXPLOTÓ</b><br>La combinación era incorrecta. La ronda terminó y la siguiente tendrá otros valores.",
-      );
-      $("#next-button").hidden = true;
-      $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
-      $("#completion-actions").hidden = false;
-      saveProgress();
+    if (state.active === BOMB_MISSION) {
+      explodeBomb(`Código incorrecto. Era <b>${mission.answer}</b>. La siguiente ronda tendrá otros valores.`);
       return;
     }
     showFeedback(
       "error",
-      `<b>ACCESO DENEGADO</b><br>La clave no coincide. Revisa qué posiciones deben estar activas y vuelve a intentarlo.`,
+      "<b>ACCESO DENEGADO</b><br>El código no coincide. Revisa qué posiciones deben estar activas y vuelve a intentarlo.",
     );
     answerInput.select();
     saveProgress();
   }
 }
 
-function nextMission() {
-  clearMissionTimer();
-  state.currentVariant = null;
-  state.mission += 1;
-  if (state.mission >= missions.length) {
-    finishGame();
-    return;
-  }
-  saveProgress();
+function openMission(index) {
+  state.active = index;
+  state.currentVariant = index < state.mission ? generatePracticeVariant(index) : null;
+  missionModal.hidden = false;
   renderMission();
+  beep(520, 0.08, "sine");
+}
+
+function closeMission() {
+  if (state.timerId) return;
+  clearMissionTimer();
+  missionModal.hidden = true;
+  state.currentVariant = null;
+  answerInput.blur();
+  saveProgress();
+  World.onMissionClosed();
 }
 
 function repeatMission() {
   clearMissionTimer();
-  state.currentVariant = generatePracticeVariant(state.mission);
+  state.currentVariant = generatePracticeVariant(state.active);
   renderMission();
 }
 
@@ -844,7 +886,7 @@ function showHint() {
   if (!state.hintUsed) {
     state.score = Math.max(0, state.score - 25);
     state.hintUsed = true;
-    $("#score").textContent = String(state.score).padStart(4, "0");
+    updateScore();
     saveProgress();
   }
   beep(330, 0.07, "sine");
@@ -855,16 +897,12 @@ function showHint() {
 function finishGame() {
   const accuracy = state.attempts ? Math.round((state.correct / state.attempts) * 100) : 100;
   const rank =
-    accuracy >= 90 && state.score >= 1200
-      ? "ZERO DAY"
-      : accuracy >= 70
-        ? "GHOST OPERATOR"
-        : "CODE BREAKER";
+    accuracy >= 90 && state.score >= 3000 ? "GENERAL BINARIO" : accuracy >= 70 ? "COMANDANTE" : "SARGENTO";
   $("#final-score").textContent = state.score;
   $("#final-accuracy").textContent = `${accuracy}%`;
   $("#final-rank").textContent = rank;
   $("#certificate-code").textContent =
-    `GH-${$("#operator-id").textContent}-${state.score.toString(16).toUpperCase().padStart(4, "0")}`;
+    `SG-${$("#operator-id").textContent}-${state.score.toString(16).toUpperCase().padStart(4, "0")}`;
   localStorage.removeItem(storageKey);
   setScreen(victoryScreen);
   playSuccess();
@@ -873,15 +911,16 @@ function finishGame() {
 function startGame(continueSaved = false) {
   if (!continueSaved) resetState();
   state.currentVariant = null;
+  missionModal.hidden = true;
   setScreen(gameScreen);
-  renderMission();
+  World.enterZone(Math.min(state.chapter, World.zoneCount - 1));
+  updateScore();
   beep(520, 0.08, "sine");
 }
 
 function initializeMatrix() {
   const canvas = $("#matrix");
   const context = canvas.getContext("2d");
-  const symbols = "01";
   const size = 16;
   let columns;
   let drops;
@@ -895,12 +934,12 @@ function initializeMatrix() {
   }
 
   function draw() {
-    context.fillStyle = "rgba(3, 9, 6, 0.12)";
+    context.fillStyle = "rgba(3, 8, 3, 0.12)";
     context.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    context.fillStyle = "#54f59b";
-    context.font = `${size}px IBM Plex Mono`;
+    context.fillStyle = "#7dff4a";
+    context.font = `${size}px VT323, monospace`;
     drops.forEach((drop, index) => {
-      context.fillText(symbols[Math.floor(Math.random() * symbols.length)], index * size, drop * size);
+      context.fillText(Math.random() > 0.5 ? "1" : "0", index * size, drop * size);
       if (drop * size > window.innerHeight && Math.random() > 0.985) drops[index] = 0;
       drops[index] += 0.32;
     });
@@ -915,11 +954,13 @@ function initializeMatrix() {
 $("#answer-form").addEventListener("submit", submitAnswer);
 $("#hint-button").addEventListener("click", showHint);
 $("#repeat-button").addEventListener("click", repeatMission);
-$("#next-button").addEventListener("click", nextMission);
+$("#next-button").addEventListener("click", closeMission);
+$("#close-mission").addEventListener("click", closeMission);
 $("#start-button").addEventListener("click", () => startGame(false));
 $("#continue-button").addEventListener("click", () => startGame(true));
 $("#restart-button").addEventListener("click", () => {
   resetState();
+  $("#continue-button").hidden = true;
   setScreen(introScreen);
 });
 $("#sound-toggle").addEventListener("click", (event) => {
@@ -928,21 +969,9 @@ $("#sound-toggle").addEventListener("click", (event) => {
   if (state.sound) beep(500);
 });
 answerInput.addEventListener("input", () => {
-  const mission = getMission();
-  if (mission.inputMode === "binary") {
-    answerInput.value = answerInput.value.replace(/[^01]/g, "");
-  } else if (mission.inputMode === "decimal") {
-    answerInput.value = answerInput.value.replace(/\D/g, "");
-  } else if (mission.inputMode === "hex") {
-    answerInput.value = answerInput.value.replace(/[^0-9a-f]/gi, "").toUpperCase();
-  } else if (mission.inputMode === "flags") {
-    answerInput.value = answerInput.value.replace(/[^zcnv,\s]/gi, "").toUpperCase();
-  } else {
-    answerInput.value = answerInput.value.replace(/[^0-9a-f:zcnv,\s]/gi, "").toUpperCase();
-  }
+  answerInput.value = filterInput(getMission().inputMode, answerInput.value);
 });
 
-buildMissionList();
 const hasSavedProgress = loadProgress();
 $("#continue-button").hidden = !hasSavedProgress;
 $("#operator-id").textContent = String(Math.floor(100 + Math.random() * 900));

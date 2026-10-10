@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Binary Hacker: aprende números binarios infiltrándote en sistemas ficticios."
+      content="Binary Hacker: infíltrate en una base militar, hackea terminales con binario y hexadecimal y detén misiles cifrados."
     />
-    <title>Binary Hacker</title>
+    <title>Binary Hacker // Operación Binaria</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,12 +26,12 @@
           <span class="brand-mark">01</span>
           <span>
             <strong>BINARY HACKER</strong>
-            <small>TRAINING NETWORK</small>
+            <small>OPERACIÓN BINARIA</small>
           </span>
         </a>
         <div class="system-state">
           <span class="status-dot"></span>
-          <span>RED SEGURA</span>
+          <span>CANAL MILITAR SEGURO</span>
           <button class="icon-button" id="sound-toggle" aria-label="Activar o desactivar sonido">
             SND: ON
           </button>
@@ -40,175 +40,250 @@
 
       <section class="screen active" id="intro-screen">
         <div class="intro-copy">
-          <p class="eyebrow">PROTOCOLO DE RECLUTAMIENTO // 2049</p>
-          <h1>Aprende a pensar<br /><span>en binario.</span></h1>
+          <p class="eyebrow">ORDEN DE MISIÓN // CLASIFICADO</p>
+          <h1>Infíltrate.<br /><span>Piensa en binario.</span></h1>
           <p class="lede">
-            La red Ghost necesita un nuevo operador. Aprende desde tu primer bit hasta resolver
-            sumas, hexadecimal y flags. No necesitas experiencia.
+            La IA enemiga WARDEN tomó una base militar. Muévete con las flechas, hackea cada
+            terminal con binario y hexadecimal, desactiva la bomba del sótano y defiende la sala
+            de control de misiles cifrados.
           </p>
           <div class="intro-actions">
             <button class="primary-button" id="start-button">
-              <span>INICIAR ENTRENAMIENTO</span>
+              <span>INICIAR OPERACIÓN</span>
               <span aria-hidden="true">→</span>
             </button>
-            <button class="text-button" id="continue-button" hidden>CONTINUAR SESIÓN</button>
+            <button class="text-button" id="continue-button" hidden>CONTINUAR MISIÓN</button>
           </div>
           <div class="trust-row">
-            <span>17 MISIONES</span>
-            <span>GUÍA INTEGRADA</span>
-            <span>PROGRESO GUARDADO</span>
+            <span>6 ZONAS</span>
+            <span>17 TERMINALES</span>
+            <span>5 OLEADAS DE MISILES</span>
           </div>
         </div>
 
-        <div class="terminal-card intro-terminal" aria-label="Terminal de acceso">
+        <div class="terminal-card intro-terminal" aria-label="Terminal de mando">
           <div class="pixel-city" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
           </div>
           <div class="terminal-header">
             <div class="window-dots"><i></i><i></i><i></i></div>
-            <span>ghostnet://recruitment</span>
-            <span>RSA-4096</span>
+            <span>mando://operacion-binaria</span>
+            <span>NIVEL 5</span>
           </div>
           <div class="terminal-body boot-log" id="boot-log">
-            <p><span class="muted">[00:00:01]</span> iniciando ghost_kernel...</p>
-            <p><span class="muted">[00:00:02]</span> cargando módulo binario...</p>
-            <p><span class="muted">[00:00:03]</span> enlace cifrado <b>ESTABLE</b></p>
-            <p><span class="muted">[00:00:04]</span> candidato detectado.</p>
-            <p class="prompt-line">root@ghost:~$ <span class="typed-text">esperando acceso</span><i></i></p>
+            <p><span class="muted">[0400]</span> base enemiga localizada...</p>
+            <p><span class="muted">[0401]</span> WARDEN controla 17 terminales.</p>
+            <p><span class="muted">[0402]</span> bomba detectada en el <b>SÓTANO</b></p>
+            <p><span class="muted">[0403]</span> silos de misiles <b>ACTIVOS</b></p>
+            <p class="prompt-line">mando@base:~$ <span class="typed-text">esperando soldado</span><i></i></p>
           </div>
           <div class="binary-ribbon" aria-hidden="true">
-            01000010 01001001 01001110 01000001 01010010 01011001
+            01010011 01001111 01001100 01000100 01000001 01000100 01001111
           </div>
         </div>
       </section>
 
       <section class="screen" id="game-screen">
-        <aside class="mission-sidebar">
-          <div>
-            <p class="eyebrow">OPERADOR</p>
-            <div class="operator-card">
-              <div class="avatar">GH</div>
-              <div>
-                <strong>GHOST_<span id="operator-id">731</span></strong>
-                <small>NIVEL <span id="operator-level">01</span></small>
-              </div>
-            </div>
+        <div class="hud">
+          <div class="hud-zone">
+            <span class="chapter-badge" id="zone-badge">ZONA 1</span>
+            <strong id="zone-name">PERÍMETRO</strong>
           </div>
-
-          <nav class="mission-nav" aria-label="Progreso de misiones">
-            <p class="eyebrow">NODOS DE LA RED</p>
-            <ol id="mission-list"></ol>
-          </nav>
-
-          <div class="sidebar-tip">
-            <span>CONSEJO</span>
-            <p>Cada posición binaria vale el doble de la anterior.</p>
-          </div>
-        </aside>
-
-        <section class="workspace">
-          <div class="workspace-head">
-            <div>
-              <span class="chapter-badge" id="chapter-badge">CAPÍTULO 1 // DESPERTAR</span>
-              <p class="eyebrow" id="mission-code">MISIÓN 01 // PUERTA DE ENLACE</p>
-              <h2 id="mission-title">Rompe el primer firewall</h2>
-            </div>
+          <div class="hud-stats">
+            <label class="zone-select">
+              <span>IR A</span>
+              <select id="zone-select" aria-label="Elegir zona"></select>
+            </label>
             <div class="score-panel">
               <span>PUNTOS</span>
               <strong id="score">0000</strong>
             </div>
-            <div class="timer-panel" id="timer-panel" hidden>
-              <span>CUENTA REGRESIVA</span>
-              <strong id="timer">01:15</strong>
-            </div>
-          </div>
-
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-
-          <div class="terminal-card mission-terminal">
-            <div class="terminal-header">
-              <div class="window-dots"><i></i><i></i><i></i></div>
-              <span id="terminal-path">root@ghost:/node_01</span>
-              <span id="attempt-label">INTENTOS: 0</span>
-            </div>
-            <div class="terminal-body">
-              <div class="comms-panel" id="comms-panel">
-                <div class="character-avatar" id="character-avatar">NX</div>
-                <div>
-                  <span id="character-name">NYX // MENTORA</span>
-                  <p id="character-dialogue"></p>
-                </div>
-              </div>
-              <div class="story-log" id="story-log"></div>
-              <div class="lesson-box" id="lesson-box">
-                <span class="lesson-label">INTEL</span>
-                <p id="lesson-text"></p>
-              </div>
-
-              <div class="challenge">
-                <p class="challenge-label" id="challenge-label">CLAVE INTERCEPTADA</p>
-                <div class="challenge-value" id="challenge-value"></div>
-                <p class="challenge-question" id="challenge-question"></p>
-
-                <div class="powers-row" id="powers-row"></div>
-
-                <form id="answer-form" autocomplete="off">
-                  <label for="answer-input">INGRESA LA CLAVE</label>
-                  <div class="answer-row">
-                    <span class="shell-prompt">&gt;</span>
-                    <input
-                      id="answer-input"
-                      name="answer"
-                      inputmode="numeric"
-                      spellcheck="false"
-                      aria-describedby="input-hint"
-                    />
-                    <button class="primary-button submit-button" type="submit">EJECUTAR</button>
-                  </div>
-                  <small id="input-hint">Usa solo los caracteres indicados.</small>
-                </form>
-
-                <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
-                <div class="completion-actions" id="completion-actions" hidden>
-                  <button class="text-button" id="repeat-button" type="button">OTRA VARIANTE</button>
-                  <button class="primary-button" id="next-button" type="button">SIGUIENTE MISIÓN →</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="workspace-actions">
-            <button class="text-button" id="hint-button">SOLICITAR PISTA (-25)</button>
             <div class="streak">RACHA <strong id="streak">0</strong></div>
           </div>
-        </section>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <p class="objective" id="objective">OBJETIVO: hackea la terminal 1.</p>
+
+        <div class="map-frame">
+          <canvas id="map-canvas" width="320" height="224" aria-label="Mapa de la base"></canvas>
+        </div>
+
+        <div class="radio-bar">
+          <div class="character-avatar" id="radio-avatar">NX</div>
+          <div>
+            <span id="radio-name">CMDTE. NYX // MANDO</span>
+            <p id="radio-text"></p>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <p class="controls-hint">
+            <b>FLECHAS / WASD</b> moverte · <b>choca</b> con una terminal o pulsa <b>ESPACIO</b> para
+            usarla · <span class="legend-chip t">▣</span> terminal
+            <span class="legend-chip d">▤</span> puerta <span class="legend-chip e">⇩</span> salida
+          </p>
+          <div class="dpad" aria-label="Controles táctiles">
+            <button type="button" data-dir="up" aria-label="Arriba">▲</button>
+            <button type="button" data-dir="left" aria-label="Izquierda">◀</button>
+            <button type="button" class="dpad-action" id="dpad-action" aria-label="Usar">A</button>
+            <button type="button" data-dir="right" aria-label="Derecha">▶</button>
+            <button type="button" data-dir="down" aria-label="Abajo">▼</button>
+          </div>
+        </div>
+
+        <div class="mission-modal" id="mission-modal" hidden>
+          <section class="workspace">
+            <div class="workspace-head">
+              <div>
+                <span class="chapter-badge" id="chapter-badge">ZONA 1 // PERÍMETRO</span>
+                <p class="eyebrow" id="mission-code">TERMINAL 01</p>
+                <h2 id="mission-title">Enciende la señal</h2>
+              </div>
+              <div class="timer-panel" id="timer-panel" hidden>
+                <span>CUENTA REGRESIVA</span>
+                <strong id="timer">01:15</strong>
+              </div>
+              <button class="text-button close-button" id="close-mission" type="button">✕ MAPA</button>
+            </div>
+
+            <div class="terminal-card mission-terminal">
+              <div class="terminal-header">
+                <div class="window-dots"><i></i><i></i><i></i></div>
+                <span id="terminal-path">base://zona_1/terminal_1</span>
+                <span id="attempt-label">INTENTOS: 0</span>
+              </div>
+              <div class="terminal-body">
+                <div class="comms-panel" id="comms-panel">
+                  <div class="character-avatar" id="character-avatar">NX</div>
+                  <div>
+                    <span id="character-name">CMDTE. NYX // MANDO</span>
+                    <p id="character-dialogue"></p>
+                  </div>
+                </div>
+                <div class="story-log" id="story-log"></div>
+                <div class="lesson-box" id="lesson-box">
+                  <span class="lesson-label">INTEL</span>
+                  <p id="lesson-text"></p>
+                </div>
+
+                <div class="challenge">
+                  <p class="challenge-label" id="challenge-label">CLAVE INTERCEPTADA</p>
+                  <div class="challenge-value" id="challenge-value"></div>
+                  <p class="challenge-question" id="challenge-question"></p>
+
+                  <div class="powers-row" id="powers-row"></div>
+
+                  <form id="answer-form" autocomplete="off">
+                    <label for="answer-input">INGRESA EL CÓDIGO</label>
+                    <div class="answer-row">
+                      <span class="shell-prompt">&gt;</span>
+                      <input
+                        id="answer-input"
+                        name="answer"
+                        inputmode="numeric"
+                        spellcheck="false"
+                        aria-describedby="input-hint"
+                      />
+                      <button class="primary-button submit-button" type="submit">EJECUTAR</button>
+                    </div>
+                    <small id="input-hint">Usa solo los caracteres indicados.</small>
+                  </form>
+
+                  <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+                  <div class="completion-actions" id="completion-actions" hidden>
+                    <button class="text-button" id="repeat-button" type="button">OTRA VARIANTE</button>
+                    <button class="primary-button" id="next-button" type="button">VOLVER AL MAPA →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="workspace-actions">
+              <button class="text-button" id="hint-button">SOLICITAR PISTA (-25)</button>
+              <span class="operator-tag">SGT_<span id="operator-id">731</span></span>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen" id="defense-screen">
+        <div class="hud">
+          <div class="hud-zone">
+            <span class="chapter-badge" id="wave-label">OLEADA 1/5</span>
+            <strong>CONTROL DE MISILES</strong>
+          </div>
+          <div class="hud-stats">
+            <div class="score-panel shields">
+              <span>ESCUDOS</span>
+              <strong id="shield-label">■■■</strong>
+            </div>
+            <div class="score-panel">
+              <span>PUNTOS</span>
+              <strong id="defense-score">0000</strong>
+            </div>
+            <button class="text-button" id="defense-exit" type="button">✕ MAPA</button>
+          </div>
+        </div>
+
+        <div class="map-frame defense-frame">
+          <canvas id="defense-canvas" width="480" height="300" aria-label="Radar de misiles"></canvas>
+          <div class="defense-overlay" id="defense-overlay" hidden>
+            <div class="overlay-card">
+              <p class="eyebrow" id="overlay-eyebrow">OLEADA 1/5</p>
+              <h2 id="overlay-title">CÓDIGOS BINARIOS</h2>
+              <p id="overlay-text"></p>
+              <button class="primary-button" id="overlay-button" type="button">INICIAR DEFENSA</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="defense-console terminal-card">
+          <div class="target-info">
+            <span class="challenge-label" id="target-tag">OBJETIVO: —</span>
+            <div class="target-value" id="target-value">—</div>
+            <p class="challenge-question" id="target-question"></p>
+          </div>
+          <form id="defense-form" autocomplete="off">
+            <div class="answer-row">
+              <span class="shell-prompt">&gt;</span>
+              <input id="defense-input" name="defense" spellcheck="false" aria-describedby="defense-hint" />
+              <button class="primary-button submit-button" type="submit">INTERCEPTAR</button>
+            </div>
+            <small id="defense-hint"><b>◀ ▶</b> cambia de misil · escribe el código descifrado · <b>ENTER</b> dispara</small>
+          </form>
+          <div class="feedback" id="defense-feedback" role="status" aria-live="polite"></div>
+        </div>
       </section>
 
       <section class="screen" id="victory-screen">
         <div class="victory-card">
           <div class="victory-icon">✓</div>
-          <p class="eyebrow">ACCESO ROOT CONCEDIDO</p>
-          <h2>Ya piensas<br /><span>en binario.</span></h2>
+          <p class="eyebrow">MISIÓN CUMPLIDA</p>
+          <h2>Base asegurada.<br /><span>Piensas en binario.</span></h2>
           <p>
-            Entraste a Ghost Network. Ahora puedes convertir binario y hexadecimal, resolver
-            sumas y analizar los flags del procesador.
+            Cruzaste la base, desactivaste la bomba y detuviste todos los misiles. Ya puedes
+            convertir binario y hexadecimal, sumar en binario y leer los flags Z, C, N y V.
           </p>
           <div class="final-stats">
             <div><span>PUNTUACIÓN</span><strong id="final-score">0</strong></div>
             <div><span>PRECISIÓN</span><strong id="final-accuracy">0%</strong></div>
-            <div><span>RANGO</span><strong id="final-rank">SCRIPT KIDDIE</strong></div>
+            <div><span>RANGO</span><strong id="final-rank">RECLUTA</strong></div>
           </div>
           <div class="certificate">
-            <span>GHOST NETWORK // OPERADOR VERIFICADO</span>
-            <code id="certificate-code">GH-000-0000</code>
+            <span>MANDO CENTRAL // OPERADOR CONDECORADO</span>
+            <code id="certificate-code">SG-000-0000</code>
           </div>
-          <button class="primary-button" id="restart-button">REINICIAR SIMULACIÓN</button>
+          <button class="primary-button" id="restart-button">NUEVA OPERACIÓN</button>
         </div>
       </section>
     </main>
 
     <script src="game.js"></script>
+    <script src="world.js"></script>
+    <script src="defense.js"></script>
   </body>
 </html>
