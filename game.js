@@ -858,6 +858,65 @@ function bindKeypad(pad, input, getMode, onKey = () => false) {
     if (onKey(key)) return;
     if (key === "back") input.value = input.value.slice(0, -1);
     else if (input.value.length < input.maxLength) input.value = filterInput(getMode(), input.value + key);
+    input.dispatchEvent(new Event("input"));
+  });
+}
+
+function parseSum(value) {
+  const match = /^([01]+) \+ ([01]+)(?: = (1 )?([01]+))?$/.exec(value);
+  return match && { a: match[1], b: match[2], carryOut: Boolean(match[3]), result: match[4] || null };
+}
+
+function renderSumGrid(grid, valueEl, mission) {
+  const sum = mission && parseSum(mission.value);
+  grid.hidden = !sum;
+  valueEl.hidden = Boolean(sum);
+  if (!sum) {
+    grid.innerHTML = "";
+    return;
+  }
+  const bits = sum.a.length;
+  const editable = !sum.result && mission.inputMode === "binary";
+  const cell = (content = "", cls = "") => `<span class="sum-cell ${cls}">${content}</span>`;
+  const digits = (text) => [...text].map((bit) => cell(bit)).join("");
+  const carries = Array.from({ length: bits }, (_, i) =>
+    `<button type="button" class="sum-cell carry" data-carry="${i}" aria-label="Bit que llevas"></button>`,
+  ).join("");
+  const result = editable
+    ? cell() + Array.from({ length: bits }, (_, i) =>
+        `<button type="button" class="sum-cell result" data-result="${i}" aria-label="Bit ${i + 1} del resultado"></button>`,
+      ).join("")
+    : cell(sum.carryOut ? "1" : "", "lost") + digits(sum.result);
+  grid.style.setProperty("--cols", bits + 1);
+  grid.innerHTML = [
+    carries + cell(),
+    cell() + digits(sum.a),
+    cell("+", "sign") + digits(sum.b),
+    '<span class="sum-line"></span>',
+    result,
+    `<small class="sum-help">${editable ? "Toca arriba para marcar el 1 que llevas · toca abajo para escribir cada bit del resultado" : "Toca arriba para marcar el 1 que llevas"}</small>`,
+  ].join("");
+}
+
+function syncSumGrid(grid, input) {
+  grid.querySelectorAll("[data-result]").forEach((button, i) => {
+    const bit = input.value[i];
+    button.textContent = bit === "0" || bit === "1" ? bit : "";
+  });
+}
+
+function bindSumGrid(grid, input) {
+  grid.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    beep(640, 0.02, "square");
+    if (button.dataset.carry !== undefined) {
+      button.textContent = button.textContent ? "" : "1";
+      return;
+    }
+    button.textContent = { "": "0", 0: "1", 1: "" }[button.textContent];
+    const values = [...grid.querySelectorAll("[data-result]")].map((item) => item.textContent);
+    input.value = values.some(Boolean) ? values.map((bit) => bit || "_").join("") : "";
   });
 }
 
@@ -898,6 +957,7 @@ function renderMission() {
   $("#lesson-text").textContent = mission.lesson;
   $("#challenge-label").textContent = mission.label;
   $("#challenge-value").textContent = mission.value;
+  renderSumGrid($("#sum-grid"), $("#challenge-value"), mission);
   $("#challenge-question").textContent = mission.question;
   updateScore();
   renderPowers(mission);
@@ -1058,6 +1118,8 @@ function initializeMatrix() {
 
 $("#answer-form").addEventListener("submit", submitAnswer);
 bindKeypad($("#answer-keypad"), answerInput, () => getMission().inputMode);
+bindSumGrid($("#sum-grid"), answerInput);
+answerInput.addEventListener("input", () => syncSumGrid($("#sum-grid"), answerInput));
 $("#hint-button").addEventListener("click", showHint);
 $("#repeat-button").addEventListener("click", repeatMission);
 $("#next-button").addEventListener("click", closeMission);

@@ -1940,3 +1940,85 @@ h2 span {
 .map-overlay {
   z-index: 5;
 }
+
+.sum-grid {
+  --cell: clamp(44px, 11vw, 72px);
+  display: inline-grid;
+  grid-template-columns: repeat(var(--cols, 5), var(--cell));
+  gap: 6px 8px;
+  justify-content: center;
+  margin: 8px auto 4px;
+  font-family: var(--pixel-font);
+}
+
+.sum-grid.compact {
+  --cell: clamp(32px, 8vw, 40px);
+  display: grid;
+  justify-content: start;
+}
+
+.sum-grid[hidden] {
+  display: none;
+}
+
+.sum-cell {
+  display: grid;
+  place-items: center;
+  height: var(--cell);
+  padding: 0;
+  color: var(--green);
+  font-family: var(--pixel-font);
+  font-size: calc(var(--cell) * 0.5);
+  line-height: 1;
+  text-shadow: 3px 3px 0 #020401;
+}
+
+button.sum-cell {
+  border: 3px dashed var(--line);
+  -webkit-tap-highlight-color: transparent;
+  background: #0a1007;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sum-cell.carry {
+  height: calc(var(--cell) * 0.6);
+  color: var(--amber);
+  border-color: #7a5a12;
+  font-size: calc(var(--cell) * 0.32);
+}
+
+.sum-cell.sign {
+  color: var(--amber);
+}
+
+.sum-cell.lost {
+  color: var(--red);
+}
+
+button.sum-cell.result {
+  border: 3px solid var(--green-dim);
+}
+
+button.sum-cell:hover {
+  border-color: var(--green);
+}
+
+.sum-line {
+  grid-column: 1 / -1;
+  height: 4px;
+  background: var(--green);
+  box-shadow: 3px 3px 0 #020401;
+}
+
+.sum-help {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-family: var(--text-font);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.sum-grid.compact .sum-help {
+  text-align: left;
+}

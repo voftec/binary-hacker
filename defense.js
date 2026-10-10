@@ -93,6 +93,7 @@ const Defense = (() => {
   function clearTarget() {
     $("#target-tag").textContent = "OBJETIVO: —";
     $("#target-value").textContent = "—";
+    renderSumGrid($("#defense-sum"), $("#target-value"), null);
     $("#target-question").textContent = "Esperando contacto en el radar...";
   }
 
@@ -107,6 +108,7 @@ const Defense = (() => {
     const config = inputConfigFor(m.challenge);
     $("#target-tag").textContent = `OBJETIVO: MISIL M${m.id} // ${m.challenge.label}`;
     $("#target-value").textContent = m.challenge.value;
+    renderSumGrid($("#defense-sum"), $("#target-value"), m.challenge);
     $("#target-question").textContent = m.challenge.question;
     input.value = "";
     input.maxLength = config.maxLength;
@@ -484,6 +486,7 @@ const Defense = (() => {
   }
 
   $("#defense-form").addEventListener("submit", fire);
+  bindSumGrid($("#defense-sum"), input);
   bindKeypad(pad, input, () => (selected() ? selected().challenge.inputMode : "binary"), (key) => {
     if (key !== "prev" && key !== "next") return false;
     if (run && run.phase === "play") cycle(key === "prev" ? -1 : 1);
@@ -498,6 +501,7 @@ const Defense = (() => {
   input.addEventListener("input", () => {
     const m = run && selected();
     if (m) input.value = filterInput(m.challenge.inputMode, input.value);
+    syncSumGrid($("#defense-sum"), input);
   });
   canvas.addEventListener("pointerdown", (event) => {
     if (!run) return;
