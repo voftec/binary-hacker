@@ -523,6 +523,34 @@ h2 span {
   border-left: 1px solid var(--green-dim);
 }
 
+.timer-panel {
+  min-width: 130px;
+  padding: 10px 14px;
+  border-left: 1px solid var(--red);
+}
+
+.timer-panel[hidden] {
+  display: none;
+}
+
+.timer-panel span,
+.timer-panel strong {
+  display: block;
+  text-align: right;
+}
+
+.timer-panel span {
+  color: #bd777a;
+  font-size: 0.55rem;
+}
+
+.timer-panel strong {
+  margin-top: 3px;
+  color: var(--red);
+  font-size: 1.35rem;
+  text-shadow: 0 0 12px rgba(255, 95, 103, 0.25);
+}
+
 .score-panel span,
 .score-panel strong {
   display: block;
@@ -771,6 +799,19 @@ h2 span {
   color: #ff9ba0;
   border-color: rgba(255, 95, 103, 0.35);
   background: rgba(255, 95, 103, 0.05);
+}
+
+.completion-actions {
+  width: min(560px, 100%);
+  margin: 8px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.completion-actions[hidden] {
+  display: none;
 }
 
 .workspace-actions {
@@ -1040,6 +1081,12 @@ h2 span {
 
   .answer-row {
     flex-wrap: wrap;
+  }
+
+  .completion-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    gap: 10px;
   }
 
   .submit-button {

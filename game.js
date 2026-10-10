@@ -293,10 +293,10 @@ const missions = [
     title: "Conecta todo lo aprendido",
     nav: "Acceso root",
     character: ["NX", "NYX // MENTORA"],
-    dialogue: "Esta vez no hay un concepto nuevo. Convierte, suma y analiza. Ya conoces cada pieza.",
+    dialogue: "El Warden activó una bomba digital. Convierte, suma y analiza antes de que el contador llegue a cero.",
     story: [
-      "El núcleo entrega dos valores hexadecimales de 8 bits.",
-      "Debes calcular el resultado y sus flags para vencer al <b>Warden</b>.",
+      "La carga está conectada al núcleo de Ghost Network.",
+      "Calcula el resultado y sus flags para enviar el <b>código de desactivación</b>.",
     ],
     lesson: "Convierte 7F y 01 a binario, suma los bytes, vuelve a hexadecimal y revisa Z, C, N y V.",
     label: "OPERACIÓN MAESTRA",
@@ -319,6 +319,8 @@ const state = {
   sound: true,
   hintUsed: false,
   locked: false,
+  currentVariant: null,
+  timerId: null,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -361,6 +363,7 @@ function loadProgress() {
 }
 
 function resetState() {
+  clearMissionTimer();
   Object.assign(state, {
     mission: 0,
     score: 0,
@@ -369,8 +372,230 @@ function resetState() {
     streak: 0,
     hintUsed: false,
     locked: false,
+    currentVariant: null,
+    timerId: null,
   });
   localStorage.removeItem(storageKey);
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function binary(value, bits) {
+  return value.toString(2).padStart(bits, "0");
+}
+
+function hex(value) {
+  return value.toString(16).toUpperCase().padStart(2, "0");
+}
+
+function getMission() {
+  return state.currentVariant || missions[state.mission];
+}
+
+function generatePracticeVariant(index) {
+  const base = missions[index];
+  const variant = {
+    ...base,
+    code: `${base.code} // PRÁCTICA`,
+    dialogue: "Nueva combinación. Resuelve con el mismo método, no con la respuesta anterior.",
+  };
+
+  if (index === 0) {
+    const on = Math.random() > 0.5;
+    return {
+      ...variant,
+      value: on ? "ON" : "OFF",
+      question: `¿Qué bit representa ${on ? "ENCENDIDO" : "APAGADO"}?`,
+      answer: on ? "1" : "0",
+      hint: on ? "Encendido es el estado activo." : "Apagado es el estado inactivo.",
+      explain: `${on ? "1" : "0"} representa ${on ? "encendido" : "apagado"}.`,
+    };
+  }
+
+  if ([1, 3, 7].includes(index)) {
+    const bits = index === 1 ? 4 : 8;
+    const value = randomInt(1, 2 ** bits - 1);
+    const encoded = binary(value, bits);
+    return {
+      ...variant,
+      value: encoded,
+      answer: String(value),
+      hint: `Suma las posiciones activas de ${encoded}.`,
+      explain: `${encoded} representa ${value} en decimal.`,
+    };
+  }
+
+  if ([2, 6].includes(index)) {
+    const bits = index === 2 ? 4 : 8;
+    const value = randomInt(1, 2 ** bits - 1);
+    const encoded = binary(value, bits);
+    return {
+      ...variant,
+      value: String(value),
+      answer: encoded,
+      hint: `Busca qué potencias de dos suman ${value}.`,
+      explain: `${value} se representa como ${encoded}.`,
+    };
+  }
+
+  if (index === 4) {
+    const left = randomInt(1, 6);
+    const right = randomInt(1, 7 - left);
+    const result = left + right;
+    return {
+      ...variant,
+      value: `${binary(left, 4)} + ${binary(right, 4)}`,
+      answer: binary(result, 4),
+      hint: `En decimal es ${left} + ${right}.`,
+      explain: `${binary(left, 4)} + ${binary(right, 4)} = ${binary(result, 4)}.`,
+    };
+  }
+
+  if (index === 5) {
+    const examples = [
+      [3, 1],
+      [5, 3],
+      [11, 1],
+      [6, 2],
+    ];
+    const [left, right] = examples[randomInt(0, examples.length - 1)];
+    const result = left + right;
+    return {
+      ...variant,
+      value: `${binary(left, 4)} + ${binary(right, 4)}`,
+      answer: binary(result, 4),
+      hint: `En decimal es ${left} + ${right}. Observa dónde aparece 1 + 1.`,
+      explain: `${binary(left, 4)} + ${binary(right, 4)} = ${binary(result, 4)}.`,
+    };
+  }
+
+  if (index === 8) {
+    const value = randomInt(10, 15);
+    const hexValue = value.toString(16).toUpperCase();
+    return {
+      ...variant,
+      value: binary(value, 4),
+      answer: hexValue,
+      hint: `Primero convierte ${binary(value, 4)} a decimal.`,
+      explain: `${binary(value, 4)} vale ${value}, que en hexadecimal es ${hexValue}.`,
+    };
+  }
+
+  if (index === 9) {
+    const value = randomInt(16, 255);
+    return {
+      ...variant,
+      value: hex(value),
+      answer: binary(value, 8),
+      hint: `Convierte por separado ${hex(value)[0]} y ${hex(value)[1]}.`,
+      explain: `${hex(value)} en hexadecimal es ${binary(value, 8)} en binario.`,
+    };
+  }
+
+  if (index === 10) {
+    const value = randomInt(16, 255);
+    return {
+      ...variant,
+      value: binary(value, 8),
+      answer: hex(value),
+      hint: `Separa ${binary(value, 8)} en dos grupos de cuatro bits.`,
+      explain: `${binary(value, 8)} en binario es ${hex(value)} en hexadecimal.`,
+    };
+  }
+
+  if (index === 11) {
+    const value = randomInt(0, 255);
+    return {
+      ...variant,
+      value: String(value),
+      answer: value.toString(16).toUpperCase(),
+      hint: `${value} en binario es ${binary(value, 8)}. Divide el byte en dos grupos.`,
+      explain: `${value} en decimal es ${value.toString(16).toUpperCase()} en hexadecimal.`,
+    };
+  }
+
+  const flagVariants = {
+    12: [
+      ["1010 + 0110 = 1 0000", "ZC", "El registro queda en cero y hubo acarreo."],
+      ["1100 + 0100 = 1 0000", "ZC", "El registro queda en cero y hubo acarreo."],
+    ],
+    13: [
+      ["1001 + 0010 = 1011", "N", "El resultado conserva el bit de signo en 1."],
+      ["1010 + 0001 = 1011", "N", "El resultado conserva el bit de signo en 1."],
+    ],
+    14: [
+      ["0110 + 0010 = 1000", "NV", "Dos positivos produjeron un patrón negativo."],
+      ["0101 + 0011 = 1000", "NV", "Dos positivos produjeron un patrón negativo."],
+    ],
+    15: [
+      ["1101 + 0100 = 1 0001", "C", "Solo sale un acarreo del registro."],
+      ["1010 + 0111 = 1 0001", "C", "Solo sale un acarreo del registro."],
+    ],
+  };
+
+  if (flagVariants[index]) {
+    const [value, answer, explanation] =
+      flagVariants[index][randomInt(0, flagVariants[index].length - 1)];
+    return {
+      ...variant,
+      value,
+      answer,
+      hint: "Revisa Z, C, N y V uno por uno.",
+      explain: explanation,
+    };
+  }
+
+  const finalVariants = [
+    ["7F", "01", "80", "NV"],
+    ["FF", "01", "00", "ZC"],
+    ["80", "80", "00", "ZCV"],
+    ["40", "40", "80", "NV"],
+  ];
+  const [left, right, result, flags] =
+    finalVariants[randomInt(0, finalVariants.length - 1)];
+  return {
+    ...variant,
+    value: `${left} + ${right}`,
+    answer: `${result}:${flags}`,
+    hint: `Convierte ${left} y ${right} a bytes, suma y revisa cada flag.`,
+    explain: `${left} + ${right} = ${result}. Los flags activos son ${flags.split("").join(", ")}.`,
+  };
+}
+
+function clearMissionTimer() {
+  if (state.timerId) clearInterval(state.timerId);
+  state.timerId = null;
+  $("#timer-panel").hidden = true;
+}
+
+function startMissionTimer(seconds = 75) {
+  clearMissionTimer();
+  $("#timer-panel").hidden = false;
+  let remaining = seconds;
+  const update = () => {
+    const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+    const secs = String(remaining % 60).padStart(2, "0");
+    $("#timer").textContent = `${minutes}:${secs}`;
+    if (remaining <= 0) {
+      clearMissionTimer();
+      state.locked = true;
+      state.streak = 0;
+      showFeedback(
+        "error",
+        "<b>LA BOMBA EXPLOTÓ</b><br>La ronda terminó. Ghost Network generará un ejercicio nuevo.",
+      );
+      $("#next-button").hidden = true;
+      $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
+      $("#completion-actions").hidden = false;
+      beep(110, 0.35, "sawtooth");
+      return;
+    }
+    remaining -= 1;
+  };
+  update();
+  state.timerId = setInterval(update, 1000);
 }
 
 function beep(frequency = 500, duration = 0.06, type = "square") {
@@ -422,7 +647,7 @@ function renderPowers(mission) {
 }
 
 function renderMission() {
-  const mission = missions[state.mission];
+  const mission = getMission();
   const inputConfig = {
     binary: {
       maxLength: mission.powers.length,
@@ -459,6 +684,11 @@ function renderMission() {
   state.locked = false;
   feedback.className = "feedback";
   feedback.textContent = "";
+  $("#completion-actions").hidden = true;
+  $("#next-button").hidden = false;
+  $("#next-button").textContent =
+    state.mission === missions.length - 1 ? "DESACTIVAR Y ENTRAR →" : "SIGUIENTE MISIÓN →";
+  $("#repeat-button").textContent = "OTRA VARIANTE";
   answerInput.value = "";
   answerInput.maxLength = inputConfig.maxLength;
   answerInput.placeholder = inputConfig.placeholder;
@@ -483,6 +713,11 @@ function renderMission() {
   $("#progress-fill").style.width = `${(state.mission / missions.length) * 100}%`;
   renderPowers(mission);
   updateMissionList();
+  if (state.mission === missions.length - 1) {
+    startMissionTimer();
+  } else {
+    clearMissionTimer();
+  }
   setTimeout(() => answerInput.focus(), 180);
 }
 
@@ -509,7 +744,7 @@ function submitAnswer(event) {
   event.preventDefault();
   if (state.locked) return;
 
-  const mission = missions[state.mission];
+  const mission = getMission();
   const rawAnswer = answerInput.value;
   const answer = normalizeAnswer(rawAnswer, mission.inputMode);
   const validators = {
@@ -550,17 +785,31 @@ function submitAnswer(event) {
     $("#progress-fill").style.width = `${((state.mission + 1) / missions.length) * 100}%`;
     showFeedback(
       "success",
-      `<b>ACCESO CONCEDIDO +${reward}</b><br>${mission.explain} Abriendo siguiente nodo...`,
+      `<b>ACCESO CONCEDIDO +${reward}</b><br>${mission.explain}`,
     );
+    clearMissionTimer();
+    $("#completion-actions").hidden = false;
     playSuccess();
     saveProgress();
-    setTimeout(nextMission, 1650);
   } else {
     state.streak = 0;
     state.score = Math.max(0, state.score - 10);
     $("#score").textContent = String(state.score).padStart(4, "0");
     $("#streak").textContent = "0";
     beep(150, 0.15, "sawtooth");
+    if (state.mission === missions.length - 1) {
+      clearMissionTimer();
+      state.locked = true;
+      showFeedback(
+        "error",
+        "<b>LA BOMBA EXPLOTÓ</b><br>La combinación era incorrecta. La ronda terminó y la siguiente tendrá otros valores.",
+      );
+      $("#next-button").hidden = true;
+      $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
+      $("#completion-actions").hidden = false;
+      saveProgress();
+      return;
+    }
     showFeedback(
       "error",
       `<b>ACCESO DENEGADO</b><br>La clave no coincide. Revisa qué posiciones deben estar activas y vuelve a intentarlo.`,
@@ -571,6 +820,8 @@ function submitAnswer(event) {
 }
 
 function nextMission() {
+  clearMissionTimer();
+  state.currentVariant = null;
   state.mission += 1;
   if (state.mission >= missions.length) {
     finishGame();
@@ -580,9 +831,15 @@ function nextMission() {
   renderMission();
 }
 
+function repeatMission() {
+  clearMissionTimer();
+  state.currentVariant = generatePracticeVariant(state.mission);
+  renderMission();
+}
+
 function showHint() {
   if (state.locked) return;
-  const mission = missions[state.mission];
+  const mission = getMission();
   if (!state.hintUsed) {
     state.score = Math.max(0, state.score - 25);
     state.hintUsed = true;
@@ -614,6 +871,7 @@ function finishGame() {
 
 function startGame(continueSaved = false) {
   if (!continueSaved) resetState();
+  state.currentVariant = null;
   setScreen(gameScreen);
   renderMission();
   beep(520, 0.08, "sine");
@@ -655,6 +913,8 @@ function initializeMatrix() {
 
 $("#answer-form").addEventListener("submit", submitAnswer);
 $("#hint-button").addEventListener("click", showHint);
+$("#repeat-button").addEventListener("click", repeatMission);
+$("#next-button").addEventListener("click", nextMission);
 $("#start-button").addEventListener("click", () => startGame(false));
 $("#continue-button").addEventListener("click", () => startGame(true));
 $("#restart-button").addEventListener("click", () => {
@@ -667,7 +927,7 @@ $("#sound-toggle").addEventListener("click", (event) => {
   if (state.sound) beep(500);
 });
 answerInput.addEventListener("input", () => {
-  const mission = missions[state.mission];
+  const mission = getMission();
   if (mission.inputMode === "binary") {
     answerInput.value = answerInput.value.replace(/[^01]/g, "");
   } else if (mission.inputMode === "decimal") {
