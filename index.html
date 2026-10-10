@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Binary Hacker: aprende números binarios infiltrándote en sistemas ficticios."
+    />
+    <title>Binary Hacker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="matrix" aria-hidden="true"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Binary Hacker, inicio">
+          <span class="brand-mark">01</span>
+          <span>
+            <strong>BINARY HACKER</strong>
+            <small>TRAINING NETWORK</small>
+          </span>
+        </a>
+        <div class="system-state">
+          <span class="status-dot"></span>
+          <span>RED SEGURA</span>
+          <button class="icon-button" id="sound-toggle" aria-label="Activar o desactivar sonido">
+            SND: ON
+          </button>
+        </div>
+      </header>
+
+      <section class="screen active" id="intro-screen">
+        <div class="intro-copy">
+          <p class="eyebrow">PROTOCOLO DE RECLUTAMIENTO // 2049</p>
+          <h1>Aprende a pensar<br /><span>en binario.</span></h1>
+          <p class="lede">
+            La red Ghost necesita un nuevo operador. Supera cada firewall usando solo ceros,
+            unos y lógica. No necesitas experiencia.
+          </p>
+          <div class="intro-actions">
+            <button class="primary-button" id="start-button">
+              <span>INICIAR ENTRENAMIENTO</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button class="text-button" id="continue-button" hidden>CONTINUAR SESIÓN</button>
+          </div>
+          <div class="trust-row">
+            <span>8 MISIONES</span>
+            <span>GUÍA INTEGRADA</span>
+            <span>PROGRESO GUARDADO</span>
+          </div>
+        </div>
+
+        <div class="terminal-card intro-terminal" aria-label="Terminal de acceso">
+          <div class="terminal-header">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <span>ghostnet://recruitment</span>
+            <span>RSA-4096</span>
+          </div>
+          <div class="terminal-body boot-log" id="boot-log">
+            <p><span class="muted">[00:00:01]</span> iniciando ghost_kernel...</p>
+            <p><span class="muted">[00:00:02]</span> cargando módulo binario...</p>
+            <p><span class="muted">[00:00:03]</span> enlace cifrado <b>ESTABLE</b></p>
+            <p><span class="muted">[00:00:04]</span> candidato detectado.</p>
+            <p class="prompt-line">root@ghost:~$ <span class="typed-text">esperando acceso</span><i></i></p>
+          </div>
+          <div class="binary-ribbon" aria-hidden="true">
+            01000010 01001001 01001110 01000001 01010010 01011001
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="game-screen">
+        <aside class="mission-sidebar">
+          <div>
+            <p class="eyebrow">OPERADOR</p>
+            <div class="operator-card">
+              <div class="avatar">GH</div>
+              <div>
+                <strong>GHOST_<span id="operator-id">731</span></strong>
+                <small>NIVEL <span id="operator-level">01</span></small>
+              </div>
+            </div>
+          </div>
+
+          <nav class="mission-nav" aria-label="Progreso de misiones">
+            <p class="eyebrow">NODOS DE LA RED</p>
+            <ol id="mission-list"></ol>
+          </nav>
+
+          <div class="sidebar-tip">
+            <span>CONSEJO</span>
+            <p>Cada posición binaria vale el doble de la anterior.</p>
+          </div>
+        </aside>
+
+        <section class="workspace">
+          <div class="workspace-head">
+            <div>
+              <p class="eyebrow" id="mission-code">MISIÓN 01 // PUERTA DE ENLACE</p>
+              <h2 id="mission-title">Rompe el primer firewall</h2>
+            </div>
+            <div class="score-panel">
+              <span>PUNTOS</span>
+              <strong id="score">0000</strong>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <div class="terminal-card mission-terminal">
+            <div class="terminal-header">
+              <div class="window-dots"><i></i><i></i><i></i></div>
+              <span id="terminal-path">root@ghost:/node_01</span>
+              <span id="attempt-label">INTENTOS: 0</span>
+            </div>
+            <div class="terminal-body">
+              <div class="story-log" id="story-log"></div>
+              <div class="lesson-box" id="lesson-box">
+                <span class="lesson-label">INTEL</span>
+                <p id="lesson-text"></p>
+              </div>
+
+              <div class="challenge">
+                <p class="challenge-label" id="challenge-label">CLAVE INTERCEPTADA</p>
+                <div class="challenge-value" id="challenge-value"></div>
+                <p class="challenge-question" id="challenge-question"></p>
+
+                <div class="powers-row" id="powers-row"></div>
+
+                <form id="answer-form" autocomplete="off">
+                  <label for="answer-input">INGRESA LA CLAVE</label>
+                  <div class="answer-row">
+                    <span class="shell-prompt">&gt;</span>
+                    <input
+                      id="answer-input"
+                      name="answer"
+                      inputmode="numeric"
+                      spellcheck="false"
+                      aria-describedby="input-hint"
+                    />
+                    <button class="primary-button submit-button" type="submit">EJECUTAR</button>
+                  </div>
+                  <small id="input-hint">Usa solo los caracteres indicados.</small>
+                </form>
+
+                <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workspace-actions">
+            <button class="text-button" id="hint-button">SOLICITAR PISTA (-25)</button>
+            <div class="streak">RACHA <strong id="streak">0</strong></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="victory-screen">
+        <div class="victory-card">
+          <div class="victory-icon">✓</div>
+          <p class="eyebrow">ACCESO ROOT CONCEDIDO</p>
+          <h2>Ya piensas<br /><span>en binario.</span></h2>
+          <p>
+            Entraste a Ghost Network. Ahora puedes leer números binarios, construirlos y
+            reconocer sus patrones.
+          </p>
+          <div class="final-stats">
+            <div><span>PUNTUACIÓN</span><strong id="final-score">0</strong></div>
+            <div><span>PRECISIÓN</span><strong id="final-accuracy">0%</strong></div>
+            <div><span>RANGO</span><strong id="final-rank">SCRIPT KIDDIE</strong></div>
+          </div>
+          <div class="certificate">
+            <span>GHOST NETWORK // OPERADOR VERIFICADO</span>
+            <code id="certificate-code">GH-000-0000</code>
+          </div>
+          <button class="primary-button" id="restart-button">REINICIAR SIMULACIÓN</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
