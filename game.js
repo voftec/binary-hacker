@@ -1,12 +1,12 @@
 const missions = [
   {
-    chapter: "ZONA 1 // PERÍMETRO",
+    chapter: "CAMPAMENTO // CAMPO DE BITS",
     code: "TERMINAL 01 // EL PRIMER BIT",
     title: "Enciende la señal",
     nav: "El primer bit",
     character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "No memorices todavía. Un bit es solo un interruptor: 0 apagado, 1 encendido.",
-    story: ["Llegas de noche al perímetro de la base enemiga.", "Activa tu radio enviando un bit <b>encendido</b>."],
+    story: ["Primer día en el campamento. El sargento te entrega una radio de práctica.", "Activa tu radio enviando un bit <b>encendido</b>."],
     lesson: "BIT significa binary digit. Solo puede tener dos estados: 0 o 1.",
     label: "ESTADO SOLICITADO",
     value: "ON",
@@ -18,7 +18,7 @@ const missions = [
     powers: [1],
   },
   {
-    chapter: "ZONA 1 // PERÍMETRO",
+    chapter: "CAMPAMENTO // CAMPO DE BITS",
     code: "TERMINAL 02 // CUATRO INTERRUPTORES",
     title: "Descubre el valor de posición",
     nav: "Posiciones",
@@ -36,7 +36,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 1 // PERÍMETRO",
+    chapter: "CAMPAMENTO // CAMPO DE BITS",
     code: "TERMINAL 03 // CONSTRUIR UNA CLAVE",
     title: "Piensa con interruptores",
     nav: "Construir clave",
@@ -54,7 +54,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 1 // PERÍMETRO",
+    chapter: "CAMPAMENTO // CAMPO DE BITS",
     code: "TERMINAL 04 // PRIMER BYTE",
     title: "Amplía tu visión",
     nav: "Primer byte",
@@ -72,13 +72,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 2 // CUARTEL",
+    chapter: "CAMPAMENTO // GIMNASIO DE SUMAS",
     code: "TERMINAL 05 // SUMA LIMPIA",
     title: "Suma como una máquina",
     nav: "Suma limpia",
     character: ["BT", "BYTE // DRON EXPLORADOR"],
     dialogue: "Regla rápida: 0+0=0, 0+1=1, 1+1=10. En ese último caso escribes 0 y llevas 1.",
-    story: ["Dentro del cuartel, la alarma divide su clave en dos señales.", "Combínalas con una <b>suma binaria</b>."],
+    story: ["En el gimnasio, la alarma de práctica divide su clave en dos señales.", "Combínalas con una <b>suma binaria</b>."],
     lesson: "Suma de derecha a izquierda, igual que en decimal. Cuando obtienes 10, llevas 1.",
     label: "SUMA BINARIA",
     value: "0101 + 0010",
@@ -90,7 +90,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 2 // CUARTEL",
+    chapter: "CAMPAMENTO // GIMNASIO DE SUMAS",
     code: "TERMINAL 06 // LLEVAR UNO",
     title: "Controla el acarreo",
     nav: "Llevar uno",
@@ -108,7 +108,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 2 // CUARTEL",
+    chapter: "CAMPAMENTO // GIMNASIO DE SUMAS",
     code: "TERMINAL 07 // CLAVE DE 42",
     title: "Construye un byte completo",
     nav: "Clave de 42",
@@ -126,7 +126,7 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 2 // CUARTEL",
+    chapter: "CAMPAMENTO // GIMNASIO DE SUMAS",
     code: "TERMINAL 08 // PAQUETE FANTASMA",
     title: "Decodifica una dirección",
     nav: "Paquete fantasma",
@@ -144,13 +144,13 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    chapter: "CAMPAMENTO // AULA HEX",
     code: "TERMINAL 09 // NUEVO ALFABETO",
     title: "Conoce hexadecimal",
     nav: "Nuevo alfabeto",
     character: ["NX", "CMDTE. NYX // MANDO"],
     dialogue: "Hexadecimal usa 16 símbolos: 0 al 9 y después A, B, C, D, E, F.",
-    story: ["Entras al archivo cifrado: aquí todo está en hexadecimal.", "Cada cuatro bits se agrupan en un solo símbolo."],
+    story: ["Entras al aula de cifrado: aquí todo está en hexadecimal.", "Cada cuatro bits se agrupan en un solo símbolo."],
     lesson: "A vale 10, B 11, C 12, D 13, E 14 y F 15. Cuatro bits forman un dígito hexadecimal.",
     label: "GRUPO DE 4 BITS",
     value: "1010",
@@ -162,7 +162,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    chapter: "CAMPAMENTO // AULA HEX",
     code: "TERMINAL 10 // DOS NIBBLES",
     title: "Traduce hex a binario",
     nav: "Hex a binario",
@@ -180,7 +180,7 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    chapter: "CAMPAMENTO // AULA HEX",
     code: "TERMINAL 11 // COMPRIMIR EL BYTE",
     title: "Traduce binario a hex",
     nav: "Binario a hex",
@@ -198,7 +198,7 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 3 // ARCHIVO CIFRADO",
+    chapter: "CAMPAMENTO // AULA HEX",
     code: "TERMINAL 12 // VALOR MÁXIMO",
     title: "Conecta los tres sistemas",
     nav: "Valor máximo",
@@ -216,7 +216,7 @@ const missions = [
     powers: [128, 64, 32, 16, 8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    chapter: "CAMPAMENTO // SIMULADOR DE FLAGS",
     code: "TERMINAL 13 // ZERO Y CARRY",
     title: "Lee el estado del procesador",
     nav: "Zero y Carry",
@@ -234,7 +234,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    chapter: "CAMPAMENTO // SIMULADOR DE FLAGS",
     code: "TERMINAL 14 // NEGATIVE",
     title: "Detecta un resultado negativo",
     nav: "Negative",
@@ -252,7 +252,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    chapter: "CAMPAMENTO // SIMULADOR DE FLAGS",
     code: "TERMINAL 15 // OVERFLOW",
     title: "Distingue carry de overflow",
     nav: "Overflow",
@@ -270,7 +270,7 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 4 // SALA DE SERVIDORES",
+    chapter: "CAMPAMENTO // SIMULADOR DE FLAGS",
     code: "TERMINAL 16 // CONTROL DE ESTADO",
     title: "Comprueba los cuatro flags",
     nav: "Control de estado",
@@ -288,7 +288,51 @@ const missions = [
     powers: [8, 4, 2, 1],
   },
   {
-    chapter: "ZONA 5 // SÓTANO // BOMBA",
+    chapter: "MISIÓN // PUESTO DE CONTROL",
+    code: "CONTROL 1 // GUARDIA",
+    title: "Identifícate en binario",
+    nav: "Guardia de la entrada",
+    exam: [1, 2, 3, 6, 7],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "Alto. Responde en binario o decimal antes de que suene la alarma.",
+    story: ["La garita de entrada verifica a cada soldado.", "Examen real: <b>sin pistas y con reloj</b>."],
+    lesson: "Usa el método del campamento: potencias de dos, de derecha a izquierda.",
+  },
+  {
+    chapter: "MISIÓN // PUESTO DE CONTROL",
+    code: "CONTROL 2 // RADIO",
+    title: "Descifra la radio",
+    nav: "Radio cifrada",
+    exam: [8, 9, 10, 11],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "Mis transmisiones van en hexadecimal. A ver si las lees.",
+    story: ["La antena del puesto transmite en hexadecimal.", "Examen real: <b>sin pistas y con reloj</b>."],
+    lesson: "Cada símbolo hexadecimal son 4 bits. Traduce grupo por grupo.",
+  },
+  {
+    chapter: "MISIÓN // PUESTO DE CONTROL",
+    code: "CONTROL 3 // ARSENAL",
+    title: "Abre el arsenal",
+    nav: "Arsenal",
+    exam: [4, 5, 12, 13, 14, 15],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "El arsenal se abre con una suma o con sus flags. Yo vigilo cada bit.",
+    story: ["La puerta del arsenal pide una suma binaria o sus flags.", "Examen real: <b>sin pistas y con reloj</b>."],
+    lesson: "Suma columna por columna y revisa Z, C, N y V uno por uno.",
+  },
+  {
+    chapter: "MISIÓN // PUESTO DE CONTROL",
+    code: "CONTROL 4 // TORRE",
+    title: "Torre de mando",
+    nav: "Torre de mando",
+    exam: [1, 2, 3, 6, 7, 8, 9, 10, 11, 4, 5, 12, 13, 14, 15],
+    character: ["WD", "WARDEN // IA ENEMIGA"],
+    dialogue: "Última verificación. Puede salir cualquier cosa del entrenamiento.",
+    story: ["La torre de mando abre el acceso al sótano.", "Examen real: <b>sin pistas y con reloj</b>."],
+    lesson: "Primero identifica qué te piden: conversión, suma o flags. Después aplica el método.",
+  },
+  {
+    chapter: "MISIÓN // SÓTANO // BOMBA",
     code: "TERMINAL 17 // ACCESO ROOT",
     title: "Conecta todo lo aprendido",
     nav: "Acceso root",
@@ -331,7 +375,7 @@ const victoryScreen = $("#victory-screen");
 const missionModal = $("#mission-modal");
 const answerInput = $("#answer-input");
 const feedback = $("#feedback");
-const storageKey = "binary-hacker-progress-v2";
+const storageKey = "binary-hacker-progress-v3";
 const BOMB_MISSION = missions.length - 1;
 let audioContext;
 
@@ -360,7 +404,12 @@ function saveProgress() {
 
 function loadProgress() {
   try {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
+    let saved = JSON.parse(localStorage.getItem(storageKey));
+    if (!saved) {
+      saved = JSON.parse(localStorage.getItem("binary-hacker-progress-v2"));
+      if (saved && saved.mission > 16) saved.mission += 4;
+      if (saved && saved.chapter >= 4) saved.chapter += 1;
+    }
     if (!saved) return false;
     Object.assign(state, saved);
     return saved.mission > 0 || saved.score > 0 || saved.chapter > 0;
@@ -608,6 +657,23 @@ function generatePracticeVariant(index) {
   };
 }
 
+function variantFor(index) {
+  const base = missions[index];
+  if (!base.exam) return generatePracticeVariant(index);
+  const variant = generatePracticeVariant(base.exam[randomInt(0, base.exam.length - 1)]);
+  return {
+    ...variant,
+    chapter: base.chapter,
+    code: base.code,
+    title: base.title,
+    character: base.character,
+    dialogue: base.dialogue,
+    story: base.story,
+    lesson: base.lesson,
+    exam: true,
+  };
+}
+
 function inputConfigFor(mission) {
   return {
     binary: {
@@ -698,7 +764,7 @@ function explodeBomb(message) {
   state.locked = true;
   state.streak = 0;
   updateScore();
-  showFeedback("error", `<b>LA BOMBA EXPLOTÓ</b><br>${message}`);
+  showFeedback("error", `<b>${state.active === BOMB_MISSION ? "LA BOMBA EXPLOTÓ" : "ALARMA ACTIVADA"}</b><br>${message}`);
   $("#next-button").hidden = true;
   $("#repeat-button").textContent = "NUEVA SIMULACIÓN";
   $("#completion-actions").hidden = false;
@@ -761,25 +827,63 @@ function renderPowers(mission) {
     .join("");
 }
 
+const touchUI = matchMedia("(pointer: coarse)").matches || /[?&]touch\b/.test(location.search);
+document.body.classList.toggle("touch-ui", touchUI);
+
+const keypadKeys = {
+  binary: ["0", "1"],
+  decimal: [..."1234567890"],
+  hex: [..."0123456789ABCDEF"],
+  flags: ["Z", "C", "N", "V"],
+  final: [..."0123456789ABCDEF", ":", "Z", "C", "N", "V"],
+};
+
+function renderKeypad(pad, mode, extra = []) {
+  const keys = keypadKeys[mode].map((key, index) => {
+    const flag = mode === "flags" || (mode === "final" && index > 16) || key === ":";
+    return `<button type="button" data-key="${key}"${flag ? ' class="flag"' : ""}>${key}</button>`;
+  });
+  const nav = extra.map(([key, label]) => `<button type="button" class="nav" data-key="${key}">${label}</button>`);
+  pad.className = `keypad keypad-${mode}`;
+  pad.innerHTML = [...nav, ...keys, '<button type="button" class="back" data-key="back" aria-label="Borrar">⌫</button>'].join("");
+}
+
+function bindKeypad(pad, input, getMode, onKey = () => false) {
+  pad.addEventListener("pointerdown", (event) => event.preventDefault());
+  pad.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    const key = button.dataset.key;
+    beep(720, 0.02, "square");
+    if (onKey(key)) return;
+    if (key === "back") input.value = input.value.slice(0, -1);
+    else if (input.value.length < input.maxLength) input.value = filterInput(getMode(), input.value + key);
+  });
+}
+
 function renderMission() {
   const mission = getMission();
   const inputConfig = inputConfigFor(mission);
   const isBomb = state.active === BOMB_MISSION;
+  const timed = isBomb || Boolean(mission.exam);
   state.hintUsed = false;
   state.locked = false;
   feedback.className = "feedback";
   feedback.textContent = "";
   missionModal.classList.remove("exploded");
-  missionModal.classList.toggle("bomb", isBomb);
+  missionModal.classList.toggle("bomb", timed);
   $("#completion-actions").hidden = true;
   $("#next-button").hidden = false;
-  $("#next-button").textContent = isBomb ? "BOMBA DESACTIVADA →" : "VOLVER AL MAPA →";
+  $("#next-button").textContent = isBomb ? "BOMBA DESACTIVADA →" : mission.exam ? "CONTROL SUPERADO →" : "VOLVER AL MAPA →";
   $("#repeat-button").textContent = "OTRA VARIANTE";
-  $("#close-mission").hidden = isBomb;
+  $("#close-mission").hidden = timed;
+  $("#hint-button").hidden = Boolean(mission.exam);
   answerInput.value = "";
   answerInput.maxLength = inputConfig.maxLength;
   answerInput.placeholder = inputConfig.placeholder;
   answerInput.inputMode = inputConfig.inputMode;
+  answerInput.readOnly = touchUI;
+  renderKeypad($("#answer-keypad"), mission.inputMode);
   $("#input-hint").textContent = inputConfig.hint;
   $("#chapter-badge").textContent = mission.chapter;
   $("#mission-code").textContent = mission.code;
@@ -788,7 +892,7 @@ function renderMission() {
   $("#character-avatar").dataset.character = mission.character[0];
   $("#character-name").textContent = mission.character[1];
   $("#character-dialogue").textContent = mission.dialogue;
-  $("#terminal-path").textContent = `base://zona_${state.chapter + 1}/terminal_${String(state.active + 1).padStart(2, "0")}`;
+  $("#terminal-path").textContent = `${World.isCamp() ? "campamento" : "base"}://zona_${state.chapter + 1}/terminal_${String(state.active + 1).padStart(2, "0")}`;
   $("#attempt-label").textContent = `INTENTOS: ${state.attempts}`;
   $("#story-log").innerHTML = mission.story.map((line) => `<p>&gt; ${line}</p>`).join("");
   $("#lesson-text").textContent = mission.lesson;
@@ -797,9 +901,10 @@ function renderMission() {
   $("#challenge-question").textContent = mission.question;
   updateScore();
   renderPowers(mission);
-  if (isBomb) startMissionTimer();
+  if (isBomb) startMissionTimer(75);
+  else if (mission.exam) startMissionTimer(45);
   else clearMissionTimer();
-  setTimeout(() => answerInput.focus(), 180);
+  if (!touchUI) setTimeout(() => answerInput.focus(), 180);
 }
 
 function showFeedback(kind, message) {
@@ -843,7 +948,7 @@ function submitAnswer(event) {
     state.score = Math.max(0, state.score - 10);
     updateScore();
     beep(150, 0.15, "sawtooth");
-    if (state.active === BOMB_MISSION) {
+    if (state.active === BOMB_MISSION || mission.exam) {
       explodeBomb(`Código incorrecto. Era <b>${mission.answer}</b>. La siguiente ronda tendrá otros valores.`);
       return;
     }
@@ -858,7 +963,7 @@ function submitAnswer(event) {
 
 function openMission(index) {
   state.active = index;
-  state.currentVariant = index < state.mission ? generatePracticeVariant(index) : null;
+  state.currentVariant = missions[index].exam || index < state.mission ? variantFor(index) : null;
   missionModal.hidden = false;
   renderMission();
   beep(520, 0.08, "sine");
@@ -876,7 +981,7 @@ function closeMission() {
 
 function repeatMission() {
   clearMissionTimer();
-  state.currentVariant = generatePracticeVariant(state.active);
+  state.currentVariant = variantFor(state.active);
   renderMission();
 }
 
@@ -952,6 +1057,7 @@ function initializeMatrix() {
 }
 
 $("#answer-form").addEventListener("submit", submitAnswer);
+bindKeypad($("#answer-keypad"), answerInput, () => getMission().inputMode);
 $("#hint-button").addEventListener("click", showHint);
 $("#repeat-button").addEventListener("click", repeatMission);
 $("#next-button").addEventListener("click", closeMission);

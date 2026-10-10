@@ -43,9 +43,9 @@
           <p class="eyebrow">ORDEN DE MISIÓN // CLASIFICADO</p>
           <h1>Infíltrate.<br /><span>Piensa en binario.</span></h1>
           <p class="lede">
-            La IA enemiga WARDEN tomó una base militar. Muévete con las flechas, hackea cada
-            terminal con binario y hexadecimal, desactiva la bomba del sótano y defiende la sala
-            de control de misiles cifrados.
+            Primero completa el campamento de entrenamiento: 16 lecciones cortas de binario,
+            hexadecimal, sumas y flags. Después infíltrate en la base de WARDEN: pasa el puesto de
+            control, desactiva la bomba del sótano y defiende la sala de misiles cifrados.
           </p>
           <div class="intro-actions">
             <button class="primary-button" id="start-button">
@@ -110,6 +110,15 @@
 
         <div class="map-frame">
           <canvas id="map-canvas" width="320" height="224" aria-label="Mapa de la base"></canvas>
+          <div class="defense-overlay map-overlay" id="map-overlay" hidden>
+            <div class="overlay-card">
+              <p class="eyebrow">ENTRENAMIENTO COMPLETO</p>
+              <h2>GRADUADO</h2>
+              <p>Completaste las 16 lecciones del campamento. Rango: <b>CABO BINARIO</b>.</p>
+              <p>Ahora empieza la misión real: el puesto de control del Warden te examina <b>sin pistas y con reloj</b>.</p>
+              <button class="primary-button" id="map-overlay-button">COMENZAR MISIÓN →</button>
+            </div>
+          </div>
         </div>
 
         <div class="radio-bar">
@@ -190,6 +199,7 @@
                       />
                       <button class="primary-button submit-button" type="submit">EJECUTAR</button>
                     </div>
+                    <div class="keypad" id="answer-keypad"></div>
                     <small id="input-hint">Usa solo los caracteres indicados.</small>
                   </form>
 
@@ -253,6 +263,7 @@
               <input id="defense-input" name="defense" spellcheck="false" aria-describedby="defense-hint" />
               <button class="primary-button submit-button" type="submit">INTERCEPTAR</button>
             </div>
+            <div class="keypad" id="defense-keypad"></div>
             <small id="defense-hint"><b>◀ ▶</b> cambia de misil · escribe el código descifrado · <b>ENTER</b> dispara</small>
           </form>
           <div class="feedback" id="defense-feedback" role="status" aria-live="polite"></div>

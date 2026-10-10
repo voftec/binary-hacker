@@ -17,7 +17,9 @@ Luego abre `http://localhost:8080`.
 - **Flechas / WASD**: mover al operativo por la base (en el teléfono hay un D-pad).
 - **Choca** con una terminal o pulsa **Espacio / Enter** para hackearla.
 - Cada terminal resuelta abre la siguiente puerta; al asegurar la zona se abre la escotilla de salida.
-- Zonas: Perímetro → Cuartel → Archivo cifrado → Sala de servidores → Sótano (bomba) → Control de misiles.
+- **Campamento de entrenamiento** (16 lecciones): Campo de bits → Gimnasio de sumas → Aula hex → Simulador de flags. Hasta graduarte no se abre la misión.
+- **Misión**: Puesto de control (4 exámenes al azar, sin pistas y con 45 s) → Sótano (bomba) → Control de misiles.
+- **Teléfono sin teclado**: D-pad para moverte y teclado propio en pantalla (0/1, números, hex, Z C N V y `:`), con ◀ ▶ para cambiar de misil.
 - En el control de misiles, cada misil trae su código cifrado en binario o hexadecimal. Selecciónalo con ←/→ o con un clic y escribe la respuesta para interceptarlo. Si fallas, el misil acelera; si toca la base pierdes un escudo.
 
 ## Contenido

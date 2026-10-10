@@ -45,6 +45,7 @@ const Defense = (() => {
   const canvas = $("#defense-canvas");
   const ctx = canvas.getContext("2d");
   const input = $("#defense-input");
+  const pad = $("#defense-keypad");
   const overlay = $("#defense-overlay");
   const W = canvas.width;
   const H = canvas.height;
@@ -111,6 +112,8 @@ const Defense = (() => {
     input.maxLength = config.maxLength;
     input.placeholder = config.placeholder;
     input.inputMode = config.inputMode;
+    input.readOnly = touchUI;
+    renderKeypad(pad, m.challenge.inputMode, [["prev", "◀"], ["next", "▶"]]);
   }
 
   function autoSelect() {
@@ -152,7 +155,7 @@ const Defense = (() => {
       () => {
         overlay.hidden = true;
         run.phase = "play";
-        input.focus();
+        if (!touchUI) input.focus();
       },
     );
   }
@@ -481,6 +484,11 @@ const Defense = (() => {
   }
 
   $("#defense-form").addEventListener("submit", fire);
+  bindKeypad(pad, input, () => (selected() ? selected().challenge.inputMode : "binary"), (key) => {
+    if (key !== "prev" && key !== "next") return false;
+    if (run && run.phase === "play") cycle(key === "prev" ? -1 : 1);
+    return true;
+  });
   $("#overlay-button").addEventListener("click", () => overlayAction && overlayAction());
   $("#defense-exit").addEventListener("click", () => {
     run = null;
@@ -508,7 +516,7 @@ const Defense = (() => {
     });
     if (best) {
       select(best.id);
-      input.focus();
+      if (!touchUI) input.focus();
     }
   });
   window.addEventListener("keydown", (event) => {

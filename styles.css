@@ -1738,7 +1738,7 @@ h2 span {
   z-index: 50;
   overflow-y: auto;
   padding: 24px 16px 40px;
-  background: rgba(2, 6, 2, 0.88);
+  background: rgba(2, 6, 2, 0.97);
 }
 
 .mission-modal[hidden] {
@@ -1764,7 +1764,7 @@ h2 span {
   0% { background: rgba(255, 182, 39, 0.9); transform: translate(6px, -4px); }
   30% { background: rgba(255, 77, 61, 0.8); transform: translate(-6px, 4px); }
   60% { background: rgba(60, 10, 5, 0.9); transform: translate(3px, 2px); }
-  100% { background: rgba(2, 6, 2, 0.88); transform: none; }
+  100% { background: rgba(2, 6, 2, 0.97); transform: none; }
 }
 
 .close-button[hidden] {
@@ -1874,4 +1874,69 @@ h2 span {
     max-width: min(900px, calc((100vh - 330px) * 1.6));
     min-width: 560px;
   }
+}
+
+.keypad {
+  display: none;
+}
+
+.touch-ui .keypad:not(:empty) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.touch-ui .keypad-binary:not(:empty) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.touch-ui .keypad-flags:not(:empty) {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.keypad button {
+  min-height: 48px;
+  border: 3px solid var(--line);
+  color: var(--green);
+  background: var(--panel-soft);
+  font-family: var(--pixel-font);
+  font-size: 0.9rem;
+  box-shadow: 3px 3px 0 #020401;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.keypad-binary button {
+  min-height: 64px;
+  font-size: 1.4rem;
+}
+
+.keypad button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.keypad .flag {
+  color: var(--amber);
+  border-color: #7a5a12;
+}
+
+.keypad .back {
+  color: var(--red);
+}
+
+.keypad .nav {
+  color: #020401;
+  background: var(--green-dim);
+}
+
+.touch-ui #answer-input,
+.touch-ui #defense-input {
+  caret-color: transparent;
+}
+
+.map-overlay {
+  z-index: 5;
 }

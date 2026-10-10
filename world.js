@@ -1,6 +1,7 @@
 const TILE = 16;
 
 const radioCast = {
+  SG: "SGTO. ROCA // INSTRUCTOR",
   NX: "CMDTE. NYX // MANDO",
   BT: "BYTE // DRON EXPLORADOR",
   WD: "WARDEN // IA ENEMIGA",
@@ -8,10 +9,11 @@ const radioCast = {
 
 const zones = [
   {
-    name: "PERÍMETRO",
+    name: "CAMPAMENTO // CAMPO DE BITS",
+    camp: true,
     outdoor: true,
     missions: [0, 1, 2, 3],
-    radio: ["NX", "Soldado, cruza el perímetro. Muévete con las flechas y choca con una terminal ▣ para hackearla."],
+    radio: ["SG", "Recluta, bienvenido al campamento. Muévete con las flechas o el D-pad y choca con una terminal ▣ para entrenar."],
     map: [
       "####################",
       "#P,,,,,C#,,,,,,t,,,#",
@@ -30,9 +32,10 @@ const zones = [
     ],
   },
   {
-    name: "CUARTEL",
+    name: "CAMPAMENTO // GIMNASIO DE SUMAS",
+    camp: true,
     missions: [4, 5, 6, 7],
-    radio: ["BT", "Bip. Estamos dentro del cuartel. Aquí las cerraduras usan sumas binarias."],
+    radio: ["SG", "Gimnasio de sumas. Aquí entrenas sumas binarias, columna por columna."],
     map: [
       "####################",
       "#P.....#.......#...#",
@@ -51,9 +54,10 @@ const zones = [
     ],
   },
   {
-    name: "ARCHIVO CIFRADO",
+    name: "CAMPAMENTO // AULA HEX",
+    camp: true,
     missions: [8, 9, 10, 11],
-    radio: ["NX", "Archivo cifrado. Aquí todo está en hexadecimal: cada símbolo son 4 bits."],
+    radio: ["SG", "Aula de cifrado. Aquí todo está en hexadecimal: cada símbolo son 4 bits."],
     map: [
       "####################",
       "#....#K.K.K.K.K.K..#",
@@ -72,9 +76,10 @@ const zones = [
     ],
   },
   {
-    name: "SALA DE SERVIDORES",
+    name: "CAMPAMENTO // SIMULADOR DE FLAGS",
+    camp: true,
     missions: [12, 13, 14, 15],
-    radio: ["WD", "Sala de servidores. Mis flags vigilan cada suma. No pasarás."],
+    radio: ["SG", "Simulador de flags: Z, C, N y V. Termina este módulo y te gradúas."],
     map: [
       "####################",
       "#RRR#RRRRR#RRRR#RRR#",
@@ -93,7 +98,30 @@ const zones = [
     ],
   },
   {
-    name: "SÓTANO // BOMBA",
+    name: "MISIÓN // PUESTO DE CONTROL",
+    outdoor: true,
+    missions: [BOMB_MISSION - 4, BOMB_MISSION - 3, BOMB_MISSION - 2, BOMB_MISSION - 1],
+    radio: ["NX", "Se acabó el entrenamiento. El puesto de control del Warden examina a todos: sin pistas y con reloj."],
+    map: [
+      "####################",
+      "#P,,,,,S,#,,,,,,,,,#",
+      "#,,,,,,,,#,,,C,,,,,#",
+      "#,,1,,,,,a,,,,,2,,,#",
+      "#,,,,,,,,#,,,,,,,,,#",
+      "#,S,,,t,,#,,S,,,,t,#",
+      "##############b#####",
+      "#,,,,,,,,,,#,,,,,,,#",
+      "#,,C,,,,,,,#,,S,,,,#",
+      "#,,,,4,,,,,c,,,,3,,#",
+      "#,t,,,,,,,,#,,,,,,,#",
+      "#,,,,S,,,,,#,,,,,,,#",
+      "#E,,,,,,,,,#,,,,,,t#",
+      "####################",
+    ],
+  },
+  {
+    name: "MISIÓN // SÓTANO // BOMBA",
+    dark: true,
     missions: [BOMB_MISSION],
     radio: ["NX", "El Warden plantó una bomba en el sótano. Encuéntrala en el laberinto y desactívala."],
     map: [
@@ -114,7 +142,7 @@ const zones = [
     ],
   },
   {
-    name: "CONTROL DE MISILES",
+    name: "MISIÓN // CONTROL DE MISILES",
     missions: [],
     radio: ["WD", "Misiles en camino. Sus códigos están cifrados. Ve a la consola: descífralos o tu base cae."],
     map: [
@@ -138,6 +166,7 @@ const zones = [
 
 const World = (() => {
   const canvas = $("#map-canvas");
+  const mapOverlay = $("#map-overlay");
   const ctx = canvas.getContext("2d");
   const cols = 20;
   const rows = 14;
@@ -168,7 +197,7 @@ const World = (() => {
 
   const zone = () => zones[zoneIndex];
   const modalOpen = () => !missionModal.hidden;
-  const isActive = () => gameScreen.classList.contains("active") && !modalOpen();
+  const isActive = () => gameScreen.classList.contains("active") && !modalOpen() && mapOverlay.hidden;
   const tileAt = (x, y) => (grid[y] && grid[y][x]) || "#";
   const hash = (x, y) => (((x * 73856093) ^ (y * 19349663)) >>> 0) % 997;
 
@@ -204,28 +233,34 @@ const World = (() => {
     const next = zone().missions.find((m) => m >= state.mission);
     if (next === undefined) return "Zona asegurada. Ve a la escotilla de salida ⇩.";
     if (next === BOMB_MISSION) return "Recorre el laberinto, encuentra la bomba y desactívala.";
+    if (missions[next].exam) return `Supera el ${missions[next].code.split(" //")[0].toLowerCase()}: ${missions[next].nav}. Sin pistas, 45 s.`;
     return `Hackea la terminal ${zone().missions.indexOf(next) + 1}: ${missions[next].nav}.`;
   }
 
   function updateHud() {
-    $("#zone-badge").textContent = `ZONA ${zoneIndex + 1}/${zones.length}`;
+    const campCount = zones.filter((z) => z.camp).length;
+    $("#zone-badge").textContent = zone().camp
+      ? `ENTRENAMIENTO ${zoneIndex + 1}/${campCount}`
+      : `MISIÓN ${zoneIndex - campCount + 1}/${zones.length - campCount}`;
     $("#zone-name").textContent = zone().name;
     $("#objective").textContent = `OBJETIVO: ${objective()}`;
     $("#progress-fill").style.width = `${(Math.min(state.mission, missions.length) / missions.length) * 100}%`;
     const select = $("#zone-select");
-    select.innerHTML = zones
-      .map((z, index) =>
-        isZoneUnlocked(index)
-          ? `<option value="${index}"${index === zoneIndex ? " selected" : ""}>${index + 1}. ${z.name}</option>`
-          : "",
-      )
-      .join("");
+    const option = (z, index) =>
+      isZoneUnlocked(index)
+        ? `<option value="${index}"${index === zoneIndex ? " selected" : ""}>${z.name.split(" // ").slice(1).join(" // ")}</option>`
+        : "";
+    const group = (label, camp) => {
+      const options = zones.map((z, index) => (Boolean(z.camp) === camp ? option(z, index) : "")).join("");
+      return options ? `<optgroup label="${label}">${options}</optgroup>` : "";
+    };
+    select.innerHTML = group("CAMPAMENTO", true) + group("MISIÓN", false);
     updateScore();
   }
 
   function enterZone(index) {
     zoneIndex = Math.max(0, Math.min(index, zones.length - 1));
-    if (!isZoneUnlocked(zoneIndex)) zoneIndex = 0;
+    while (zoneIndex > 0 && !isZoneUnlocked(zoneIndex)) zoneIndex -= 1;
     state.chapter = zoneIndex;
     grid = zone().map.map((row) => [...row]);
     grid.forEach((row, y) =>
@@ -242,6 +277,12 @@ const World = (() => {
     canvas.classList.remove("zone-flash");
     void canvas.offsetWidth;
     canvas.classList.add("zone-flash");
+  }
+
+  function showGraduation() {
+    held = [];
+    mapOverlay.hidden = false;
+    $("#map-overlay-button").focus();
   }
 
   function interact(ch) {
@@ -264,7 +305,8 @@ const World = (() => {
     } else if (ch === "E") {
       if (isZoneComplete(zoneIndex)) {
         playSuccess();
-        enterZone(zoneIndex + 1);
+        if (zone().camp && !zones[zoneIndex + 1].camp) showGraduation();
+        else enterZone(zoneIndex + 1);
       } else {
         radio("NX", "La escotilla está sellada. Primero asegura todas las terminales de la zona.");
         beep(160, 0.08);
@@ -363,7 +405,7 @@ const World = (() => {
         rect(sx + gx, sy + gy, 1, 2, i % 2 ? "#2f4d22" : "#1a2c13");
       }
     } else {
-      rect(sx, sy, TILE, TILE, zoneIndex === 4 ? "#1f2419" : "#2a3223");
+      rect(sx, sy, TILE, TILE, zone().dark ? "#1f2419" : "#2a3223");
       rect(sx, sy, TILE, 1, "#323b29");
       rect(sx, sy, 1, TILE, "#323b29");
       if (h % 7 === 0) rect(sx + (h % 11) + 2, sy + (h % 9) + 3, 2, 1, "#20271a");
@@ -644,7 +686,7 @@ const World = (() => {
         else drawGround(x, y);
       }
     }
-    if (zoneIndex === 4) {
+    if (zone().dark) {
       const gradient = ctx.createRadialGradient(
         player.px + 8,
         player.py + 8,
@@ -680,6 +722,7 @@ const World = (() => {
       if (event.key === "Escape") closeMission();
       return;
     }
+    if (!mapOverlay.hidden) return;
     if (event.target.tagName === "SELECT") return;
     const dir = keyMap[event.code];
     if (dir) {
@@ -709,6 +752,10 @@ const World = (() => {
     );
   });
   $("#dpad-action").addEventListener("click", interactFacing);
+  $("#map-overlay-button").addEventListener("click", () => {
+    mapOverlay.hidden = true;
+    enterZone(zoneIndex + 1);
+  });
   $("#zone-select").addEventListener("change", (event) => {
     enterZone(Number(event.target.value));
     event.target.blur();
@@ -718,6 +765,7 @@ const World = (() => {
 
   return {
     zoneCount: zones.length,
+    isCamp: () => Boolean(zone().camp),
     enterZone,
     refresh: updateHud,
     onMissionClosed,
